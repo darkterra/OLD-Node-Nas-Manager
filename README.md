@@ -1,23 +1,16 @@
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
+        _   __                 __  ___                                 
+       / | / /___ ______      /  |/  /___ _____  ____ _____ ____  _____
+      /  |/ / __ `/ ___/_____/ /|_/ / __ `/ __ \/ __ `/ __ `/ _ \/ ___/
+     / /|  / /_/ (__  )_____/ /  / / /_/ / / / / /_/ / /_/ /  __/ /    
+    /_/ |_/\__,_/____/     /_/  /_/\__,_/_/ /_/\__,_/\__, /\___/_/     
+                                                    /____/             
     ----------------------------------------------------------------- 
-    
 
 
-Welcome to your Node.js project on Cloud9 IDE!
 
-This chat example showcases how to use `socket.io` with a static `express` server.
+Welcome to your Nas-Manager project (built on Cloud9 IDE!)
 
-## Running the server
+## What is Nas-Manager
 
-1) Open `server.js` and start the app by clicking on the "Run" button in the top menu.
-
-2) Alternatively you can launch the app from the Terminal:
-
-    $ node server.js
-
-Once the server is running, open the project in the shape of 'https://projectname-username.c9.io/'. As you enter your name, watch the Users list (on the left) update. Once you press Enter or Send, the message is shared with all connected clients.
+    Work In Progress
