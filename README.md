@@ -44,3 +44,7 @@ In short, to run NNM, you must have:
 * Of course you fork NNM
 
 It is possible to have a single disc, but this is not recommended.
+
+After checking that you have all the prerequisites perform the following command to install all dependencies and project modules :
+
+    >npm intall

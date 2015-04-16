@@ -19,22 +19,22 @@
   appName: 'Node-Nas-Management'
 });*/
 
-var messages = [];
-var sockets = [];
+var messages    = [];
+var sockets     = [];
 
 // Requires de bases
-var express				= require('express');
-var app						= express();
-var http					= require('http').Server(app);
-var path					= require('path');
-var favicon				= require('serve-favicon');
-var cookieParser	= require('cookie-parser');
-var bodyParser		= require('body-parser');
-var session				= require('express-session');
-var os            = require('os');
-var colors        = require('colors');
-var socketio      = require('socket.io');
-var resumable     = require('./resumable-node.js')('tmp/');
+var express         = require('express');
+var app             = express();
+var http            = require('http').Server(app);
+var path            = require('path');
+var favicon         = require('serve-favicon');
+var cookieParser    = require('cookie-parser');
+var bodyParser      = require('body-parser');
+var session         = require('express-session');
+var os              = require('os');
+var colors          = require('colors');
+var socketio        = require('socket.io');
+var resumable       = require('./resumable-node.js')('tmp/');
 
 // Require des controllers
 /*var compte          = require('./controllers/compte');
@@ -55,9 +55,9 @@ var port = process.env.PORT || 9087;
 // Configuration des sessions
 var EXPRESS_SID_VALUE = 'secret keyboard cat';
 var sessionMiddleware = session({
-    secret            : EXPRESS_SID_VALUE,
-	  resave            : false,
-	  saveUninitialized : true,
+    secret              : EXPRESS_SID_VALUE,
+    resave              : false,
+    saveUninitialized   : true,
 });
 
 // Configuration de l'application
@@ -92,16 +92,16 @@ app.use('/apropos', apropos);*/
 
 // Configuration de la coloration des logs
 colors.setTheme({
-  silly   : 'rainbow',
-  input   : 'grey',
-  verbose : 'cyan',
-  prompt  : 'grey',
-  info    : 'green',
-  data    : 'grey',
-  help    : 'cyan',
-  warn    : 'yellow',
-  debug   : 'blue',
-  error   : 'red'
+  silly     : 'rainbow',
+  input     : 'grey',
+  verbose   : 'cyan',
+  prompt    : 'grey',
+  info      : 'green',
+  data      : 'grey',
+  help      : 'cyan',
+  warn      : 'yellow',
+  debug     : 'blue',
+  error     : 'red'
 });
 
 /*------------------------------------------------------------------------------------------------------------------------------*/
@@ -113,11 +113,11 @@ app.post('/upload', function(req, res){
     //console.log('POST', status, original_filename, identifier);
     
     if (status == 'done') {
-      var racine = "/home/pi/www/";
-      var path = racine + "finish/";
-      var nomFinal = req.param('nom_Final');
-      var directoryName = path + '' + req.param('film_Or_Serie') + '/' + nomFinal + '(' +  req.param('anne_Film') + ')';
-      var destFileFinal = directoryName + '/';
+      var racine            = "/home/pi/www/";
+      var path              = racine + "finish/";
+      var nomFinal          = req.param('nom_Final');
+      var directoryName     = path + '' + req.param('film_Or_Serie') + '/' + nomFinal + '(' +  req.param('anne_Film') + ')';
+      var destFileFinal     = directoryName + '/';
       var resumableFilename = req.param('resumableFilename');
       
       var fs = require('fs');
