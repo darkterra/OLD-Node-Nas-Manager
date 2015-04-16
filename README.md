@@ -31,3 +31,8 @@ Node-NAS-Management is a Rich Web Client based EXTJS technology (that provides a
 (beautiful JavaScript library providing multiple simultaneous, stable and resumable uploads via the HTML5 File API).
 
 ######This project is fully open source.
+
+
+#### What do you need to run NNM ?
+For the moment NNM is planned and optimized to run on a RPI, however the project being carried by Noje.js,
+it should work anywhere as long as you have intalled the Node.js server.
