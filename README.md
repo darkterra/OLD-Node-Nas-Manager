@@ -28,4 +28,6 @@ Naturally, the NAS-Management solution contains all the basic functions and the 
 And later by the "Modularity" project, the solution may be more complete.
 Modules developed by community will see the day in addition to those developed by the original team that created the NAS-Management solution.
 
-NAS-Management is a Rich Web Client based EXTJS technology, that provides a desktop interface imitation. This project is fully open source.
+NAS-Management is a Rich Web Client based EXTJS technology (that provides a desktop interface imitation) and Resumable.js
+(beautiful JavaScript library providing multiple simultaneous, stable and resumable uploads via the HTML5 File API.).
+This project is fully open source.
