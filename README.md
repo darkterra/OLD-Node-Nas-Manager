@@ -41,5 +41,6 @@ In short, to run NNM, you must have:
 * An RPI (or other more powerful computer)
 * Node.js minimum v0.12.0
 * If possible two identical disks (or same size for data redundancy)
+* Of course you fork NNM
 
 It is possible to have a single disc, but this is not recommended.

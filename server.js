@@ -1,29 +1,118 @@
-//
-// # SimpleServer
-//
-// A simple chat server using Socket.IO, Express, and Async.
-//
-var http = require('http');
-var path = require('path');
+/*
+ * Version 0.0.0
+ * Date de Création 16/04/2015
+ * Date de modification 16/04/2015
+ *
+ * server.js
+ *  Point d'entrée de l'application (Main) 'Node-Nas-Management' qui permet de gérer un serveur NAS
+ * 
+ * Conçu par l'équipe de Node-Nas-Management :
+ *  - Jérémy Young
+ */
 
-var socketio = require('socket.io');
-var express = require('express');
+// NNM Daemonized
+//require('daemon')();
 
-//
-// ## SimpleServer `SimpleServer(obj)`
-//
-// Creates a new instance of SimpleServer with the following options:
-//  * `port` - The HTTP port to listen on. If `process.env.PORT` is set, _it overrides this value_.
-//
-var router = express();
-var server = http.createServer(router);
-var io = socketio.listen(server);
+// Profileur & Moniteur de performance
+/*require('nodetime').profile({
+  accountKey: '64e613ca9dd12e185731419090cb4075a999ccad', 
+  appName: 'Node-Nas-Management'
+});*/
 
-router.use(express.static(path.resolve(__dirname, 'client')));
 var messages = [];
 var sockets = [];
 
-io.on('connection', function (socket) {
+// Requires de bases
+var express				= require('express');
+var app						= express();
+var http					= require('http').Server(app);
+var path					= require('path');
+var favicon				= require('serve-favicon');
+var cookieParser	= require('cookie-parser');
+var bodyParser		= require('body-parser');
+var session				= require('express-session');
+var os            = require('os');
+var colors        = require('colors');
+var socketio      = require('socket.io');
+
+// Require des controllers
+/*var compte          = require('./controllers/compte');
+var accueil         = require('./controllers/accueil');
+var oublie          = require('./controllers/oublie');
+var parametres      = require('./controllers/parametres');
+var infosJoueur     = require('./controllers/infosJoueur');
+var administration  = require('./controllers/administration');
+var support         = require('./controllers/support');
+var legion          = require('./controllers/legion');
+var classement      = require('./controllers/classement');
+var faq             = require('./controllers/faq');
+var apropos         = require('./controllers/apropos');*/
+
+// Configuration du port
+var port = process.env.PORT || 9087;
+
+// Configuration des sessions
+var EXPRESS_SID_VALUE = 'secret keyboard cat';
+var sessionMiddleware = session({
+    secret            : EXPRESS_SID_VALUE,
+	  resave            : false,
+	  saveUninitialized : true,
+});
+
+// Configuration de l'application
+//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(sessionMiddleware);
+
+// Socket io
+//require('./controllers/sockets').listen(http, sessionMiddleware, colors);
+var io  = socketio.listen(http);
+
+// Template
+app.engine('html', require('ejs').renderFile);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'html');
+
+// Routing
+/*app.use(express.static(path.join(__dirname, 'public')));
+app.use('/compte', compte);
+app.use('/', accueil);
+app.use('/oublie', oublie);
+app.use('/parametres', parametres);
+app.use('/infosJoueur', infosJoueur.router);
+app.use('/administration', administration);
+app.use('/support', support);
+app.use('/legion', legion);
+app.use('/classement', classement);
+app.use('/faq', faq);
+app.use('/apropos', apropos);*/
+
+// Configuration de la coloration des logs
+colors.setTheme({
+  silly   : 'rainbow',
+  input   : 'grey',
+  verbose : 'cyan',
+  prompt  : 'grey',
+  info    : 'green',
+  data    : 'grey',
+  help    : 'cyan',
+  warn    : 'yellow',
+  debug   : 'blue',
+  error   : 'red'
+});
+
+// Création du serveur
+http.listen(port, function () {
+  console.log('\nNodeAion listening at 127.0.0.1:'.verbose + port.verbose);
+  console.log('La version du serveur Node.JS : '.data + process.version.warn);
+  console.log('Le serveur Node.JS fonctionne sur la plateforme : '.data + process.platform.warn);
+  //console.log('La plateforme fonctionne depuis : '.data + tools.convertTimeToHuman(os.uptime()).warn);
+  console.log('Profileur du projet : https://nodetime.com/app/b3bf13f35870de/transactions\n'.info);
+});
+
+/*io.on('connection', function (socket) {
     messages.forEach(function (data) {
       socket.emit('message', data);
     });
@@ -66,4 +155,4 @@ function broadcast(event, data) {
 server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
   var addr = server.address();
   console.log("Chat server listening at", addr.address + ":" + addr.port);
-});
+});*/
