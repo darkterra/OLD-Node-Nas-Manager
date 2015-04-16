@@ -34,6 +34,7 @@ var session				= require('express-session');
 var os            = require('os');
 var colors        = require('colors');
 var socketio      = require('socket.io');
+var resumable     = require('./resumable-node.js')('tmp/');
 
 // Require des controllers
 /*var compte          = require('./controllers/compte');
@@ -103,6 +104,65 @@ colors.setTheme({
   error   : 'red'
 });
 
+/*------------------------------------------------------------------------------------------------------------------------------*/
+// Handle uploads through Resumable.js
+app.post('/upload', function(req, res){
+  //console.log(req);
+  
+  resumable.post(req, function(status, filename, original_filename, identifier, nomFinal){
+    //console.log('POST', status, original_filename, identifier);
+    
+    if (status == 'done') {
+      var racine = "/home/pi/www/";
+      var path = racine + "finish/";
+      var nomFinal = req.param('nom_Final');
+      var directoryName = path + '' + req.param('film_Or_Serie') + '/' + nomFinal + '(' +  req.param('anne_Film') + ')';
+      var destFileFinal = directoryName + '/';
+      var resumableFilename = req.param('resumableFilename');
+      
+      var fs = require('fs');
+      
+      nomFinal = nomFinal + '.' + resumableFilename.substr((resumableFilename.lastIndexOf('.') +1));
+      
+      fs.exists(destFileFinal, function (exists) {
+        if (! exists) {
+          shelljs.mkdir('-p', destFileFinal);
+        }
+        destFileFinal = destFileFinal + '' + nomFinal;
+        
+        var ws = fs.createWriteStream(destFileFinal);
+        
+        resumable.write(identifier, ws);
+        ws.on('finish', function() {
+          console.log('Fichier : ' + nomFinal + ' Enregistré...');
+          shelljs.rm('-rf', 'temp/*' + identifier + '*');
+        });
+      });
+    }
+    
+    res.send(status, {
+      // NOTE: Uncomment this funciton to enable cross-domain request.
+      //'Access-Control-Allow-Origin': '*'
+    });
+  });
+});
+
+// Handle status checks on chunks through Resumable.js
+app.get('/upload', function(req, res){
+  resumable.get(req, function(status, filename, original_filename, identifier){
+    //console.log('GET', status);
+    res.send((status == 'found' ? 200 : 404), status);
+  });
+});
+
+app.get('/download/:identifier', function(req, res){
+  resumable.write(req.params.identifier, res);
+});
+
+/*------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
 // Création du serveur
 http.listen(port, function () {
   console.log('\nNodeAion listening at 127.0.0.1:'.verbose + port.verbose);
@@ -111,6 +171,10 @@ http.listen(port, function () {
   //console.log('La plateforme fonctionne depuis : '.data + tools.convertTimeToHuman(os.uptime()).warn);
   console.log('Profileur du projet : https://nodetime.com/app/b3bf13f35870de/transactions\n'.info);
 });
+
+
+
+
 
 /*io.on('connection', function (socket) {
     messages.forEach(function (data) {
