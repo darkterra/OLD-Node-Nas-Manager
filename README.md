@@ -18,9 +18,9 @@ Imagined for Raspberry PI Nas-Manager will transform your RPI into a real NAS wi
 
 The project has three main areas of development :
 
-   - Ease of use
-   - Power and Fast
-   - Modular and Maintainable
+* Ease of use
+* Power and Fast
+* Modular and Maintainable
 
 Naturally, the NAS-Management solution contains all the basic functions and the advanced functions by default the most experienced initially.
 And later by the "Modularity" project, the solution may be more complete.
