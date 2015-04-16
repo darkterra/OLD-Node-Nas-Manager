@@ -21,3 +21,6 @@ The project has three main areas of development :
     - Power and Fast
     - Modular and Maintainable
 
+Naturally, the NAS-Management solution contains all the basic functions and the advanced functions by default the most experienced initially.
+And later by the "Modularity" project, the solution may be more complete.
+Modules developed by communoté will see the day in addition to those developed by the original team that created the NAS-Management solution.
