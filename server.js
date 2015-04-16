@@ -6,7 +6,6 @@
 var http = require('http');
 var path = require('path');
 
-var async = require('async');
 var socketio = require('socket.io');
 var express = require('express');
 
@@ -33,7 +32,6 @@ io.on('connection', function (socket) {
 
     socket.on('disconnect', function () {
       sockets.splice(sockets.indexOf(socket), 1);
-      updateRoster();
     });
 
     socket.on('message', function (msg) {
@@ -55,22 +53,9 @@ io.on('connection', function (socket) {
 
     socket.on('identify', function (name) {
       socket.set('name', String(name || 'Anonymous'), function (err) {
-        updateRoster();
       });
     });
   });
-
-function updateRoster() {
-  async.map(
-    sockets,
-    function (socket, callback) {
-      socket.get('name', callback);
-    },
-    function (err, names) {
-      broadcast('roster', names);
-    }
-  );
-}
 
 function broadcast(event, data) {
   sockets.forEach(function (socket) {
