@@ -38,8 +38,8 @@ For the moment NNM is planned and optimized to run on a RPI, however the project
 it should work anywhere as long as you have intalled the Node.js server.
 
 In short, to run NNM, you must have:
-* An RPI (or other more powerful machine)
-- Node.js minimum v0.12.0
+* An RPI (or other more powerful computer)
+* Node.js minimum v0.12.0
 * If possible two identical disks (or same size for data redundancy)
 
 It is possible to have a single disc, but this is not recommended.
