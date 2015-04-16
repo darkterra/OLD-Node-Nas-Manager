@@ -1,22 +1,21 @@
 
-        _   __                 __  ___                                 
-       / | / /___ ______      /  |/  /___ _____  ____ _____ ____  _____
-      /  |/ / __ `/ ___/_____/ /|_/ / __ `/ __ \/ __ `/ __ `/ _ \/ ___/
-     / /|  / /_/ (__  )_____/ /  / / /_/ / / / / /_/ / /_/ /  __/ /    
-    /_/ |_/\__,_/____/     /_/  /_/\__,_/_/ /_/\__,_/\__, /\___/_/     
-                                                    /____/             
-    -------------------------------------------------------------------
+        _   __          __           _   __                 __  ___                                                  __ 
+       / | / /___  ____/ /__        / | / /___ ______      /  |/  /___ _____  ____ _____ ____  ____ ___  ___  ____  / /_
+      /  |/ / __ \/ __  / _ \______/  |/ / __ `/ ___/_____/ /|_/ / __ `/ __ \/ __ `/ __ `/ _ \/ __ `__ \/ _ \/ __ \/ __/
+     / /|  / /_/ / /_/ /  __/_____/ /|  / /_/ (__  )_____/ /  / / /_/ / / / / /_/ / /_/ /  __/ / / / / /  __/ / / / /_  
+    /_/ |_/\____/\__,_/\___/     /_/ |_/\__,_/____/     /_/  /_/\__,_/_/ /_/\__,_/\__, /\___/_/ /_/ /_/\___/_/ /_/\__/  
+                                                                                 /____/                                 
+    --------------------------------------------------------------------------------------------------------------------
 
 
+Welcome to your Node-Nas-Management (NNM) project (built on Cloud9 IDE!)
 
-Welcome to your Nas-Manager project (built on Cloud9 IDE!)
-
-## What is Nas-Manager ?
+## What is Node-Nas-Management (NNM) ?
 
     Work In Progress
-Imagined for Raspberry PI Nas-Manager will transform your RPI into a real NAS with Node.JS
+Imagined for Raspberry PI, Node-Nas-Management will transform your RPI into a real NAS with Node.JS
 
-NAS-Mananger is the first manager to NAS in Node.JS. Designed and built for Raspberry PI, but also suitable for Linux / Windows / Mac.
+Node-Nas-Management is the first manager to NAS in Node.JS. Designed and built for Raspberry PI, but also suitable for Linux / Windows / Mac.
 
 The project has three main areas of development :
 
@@ -24,11 +23,11 @@ The project has three main areas of development :
 * Power and Fast
 * Modular and Maintainable
 
-Naturally, the NAS-Management solution contains all the basic functions and the advanced functions by default the most experienced initially.
+Naturally, the Node-Nas-Management solution contains all the basic functions and the advanced functions by default the most experienced initially.
 And later by the "Modularity" project, the solution may be more complete.
-Modules developed by community will see the day in addition to those developed by the original team that created the NAS-Management solution.
+Modules developed by community will see the day in addition to those developed by the original team that created the Node-NAS-Management solution.
 
-NAS-Management is a Rich Web Client based EXTJS technology (that provides a desktop interface imitation) and Resumable.js
+Node-NAS-Management is a Rich Web Client based EXTJS technology (that provides a desktop interface imitation) and Resumable.js
 (beautiful JavaScript library providing multiple simultaneous, stable and resumable uploads via the HTML5 File API).
 
 ######This project is fully open source.
