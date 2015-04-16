@@ -51,4 +51,6 @@ After checking that you have all the prerequisites perform the following command
 
 Then run the service :
 
-> node server.js
+>node server.js
+
+This deamon run on the Env port or if is use, on the 3000 port.

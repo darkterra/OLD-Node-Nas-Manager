@@ -50,7 +50,7 @@ var faq             = require('./controllers/faq');
 var apropos         = require('./controllers/apropos');*/
 
 // Configuration du port
-var port = process.env.PORT || 9087;
+var port = process.env.PORT || 3000;
 
 // Configuration des sessions
 var EXPRESS_SID_VALUE = 'secret keyboard cat';
