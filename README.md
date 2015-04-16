@@ -49,4 +49,6 @@ After checking that you have all the prerequisites perform the following command
 
 >npm intall
 
->>npm intall
+Then run the service :
+
+> node server.js
