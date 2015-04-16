@@ -49,7 +49,7 @@ After checking that you have all the prerequisites perform the following command
 
 >npm intall
 
-Then run the service :
+Then run the deamon :
 
 >node server.js
 
