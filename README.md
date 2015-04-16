@@ -31,4 +31,4 @@ Modules developed by community will see the day in addition to those developed b
 NAS-Management is a Rich Web Client based EXTJS technology (that provides a desktop interface imitation) and Resumable.js
 (beautiful JavaScript library providing multiple simultaneous, stable and resumable uploads via the HTML5 File API).
 
-###This project is fully open source.
+######This project is fully open source.
