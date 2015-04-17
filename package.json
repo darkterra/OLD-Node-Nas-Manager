@@ -1,7 +1,7 @@
 {
   "name": "Nas-Manager",
   "version": "0.0.0",
-  "description": "BackEnd full Javascript (Node.js + Extjs) for NAS",
+  "description": "BackEnd full Javascript (Node.js + Extjs + Resumable.js) for NAS",
   "main": "server.js",
   "repository": "",
   "author": "DarkTerra <darkterra01@gmail.com>",

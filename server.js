@@ -7,7 +7,7 @@
  *  Point d'entrée de l'application (Main) 'Node-Nas-Management' qui permet de gérer un serveur NAS
  * 
  * Conçu par l'équipe de Node-Nas-Management :
- *  - Jérémy Young
+ *  - Jérémy Young      <darkterra01@gmail.com>
  */
 
 // NNM Daemonized
