@@ -1,5 +1,5 @@
 {
-  "name": "Nas-Manager",
+  "name": "Node-Nas-Management",
   "version": "0.0.0",
   "description": "BackEnd full Javascript (Node.js + Extjs + Resumable.js) for NAS",
   "main": "server.js",
