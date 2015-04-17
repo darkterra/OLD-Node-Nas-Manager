@@ -20,7 +20,7 @@ Node-Nas-Management is the first manager to NAS in Node.JS. Designed and built f
 The project has three main areas of development :
 
 * Ease of use
-* Power and Fast
+* Fast and Powerfull
 * Modular and Maintainable
 
 Naturally, the Node-Nas-Management solution contains all the basic functions and the advanced functions by default the most experienced initially.
@@ -40,10 +40,8 @@ it should work anywhere as long as you have intalled the Node.js server.
 In short, to run NNM, you must have:
 * An RPI (or other more powerful computer)
 * Node.js minimum v0.12.0
-* If possible two identical disks (or same size for data redundancy)
+* If possible two identical disks or same size for data redundancy (It is possible to have a single disc, but this is not recommended)
 * Of course you fork NNM
-
-It is possible to have a single disc, but this is not recommended.
 
 After checking that you have all the prerequisites perform the following command to install all dependencies and project modules :
 
