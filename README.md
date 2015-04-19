@@ -27,7 +27,7 @@ Naturally, the Node-Nas-Management solution contains all the basic functions and
 And later by the "Modularity" project, the solution may be more complete.
 Modules developed by community will see the day in addition to those developed by the original team that created the Node-NAS-Management solution.
 
-Node-NAS-Management is a Rich Web Client based EXTJS technology (that provides a desktop interface imitation) and Resumable.js
+Node-NAS-Management is a Rich Web Client based EXTJS technology (that provides a desktop interface inspire from office style) and Resumable.js
 (beautiful JavaScript library providing multiple simultaneous, stable and resumable uploads via the HTML5 File API).
 
 ######This project is fully open source.
@@ -40,7 +40,7 @@ it should work anywhere as long as you have intalled the Node.js server.
 In short, to run NNM, you must have:
 * An RPI (or other more powerful computer)
 * Node.js minimum v0.12.0
-* If possible two identical disks or same size for data redundancy (It is possible to have a single disc, but this is not recommended)
+* If possible two identical disks or same size for data redundancy (it is possible to have a single disc, but this is not recommended)
 * Of course you fork NNM
 
 After checking that you have all the prerequisites perform the following command to install all dependencies and project modules :
@@ -52,3 +52,19 @@ Then run the deamon :
 >node server.js
 
 This deamon run on the Env port or if is use, on the 3000 port.
+
+Then to use  your new servicies, take your favorite web browser and go to your ip adress of your NAS
+
+Exemple :
+
+    192.168.0.18:3000
+    
+Remenber this servicies use the 3000 port.
+
+The credential by default is :
+
+ID :
+>DarkAdmin
+
+PassWord :
+>darkadmin
