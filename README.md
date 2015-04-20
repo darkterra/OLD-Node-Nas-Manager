@@ -33,7 +33,7 @@ Node-NAS-Management is a Rich Web Client based EXTJS technology (that provides a
 ######This project is fully open source.
 
 
-#### What do you need to run NNM ?
+####What do you need to run NNM ?
 For the moment NNM is planned and optimized to run on a RPI, however the project being carried by Noje.js,
 it should work anywhere as long as you have intalled the Node.js server.
 
@@ -53,7 +53,9 @@ Then run the deamon :
 
 This deamon run on the Env port or if is use, on the 3000 port.
 
-Then to use  your new servicies, take your favorite web browser and go to your ip adress of your NAS
+####Cool ! But how do you use your new servicies, naw ?
+
+Is very simple, take your favorite web browser and go to your ip adress of your NAS
 
 Exemple :
 
