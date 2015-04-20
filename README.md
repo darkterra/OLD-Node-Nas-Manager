@@ -53,7 +53,7 @@ Then run the deamon :
 
 This deamon run on the Env port or if is use, on the 3000 port.
 
-####Cool ! But how do you use your new servicies, naw ?
+####Cool ! But how do you use your new servicies, now ?
 
 Is very simple, take your favorite web browser and go to your ip adress of your NAS
 
