@@ -61,7 +61,7 @@ Exemple :
 
     192.168.0.18:3000
     
-Remenber this servicies use the 3000 port (if the Env port is not use and define).
+Remenber this servicies use the 3000 port (if the Env port is not use and not define).
 
 The credential by default is :
 
