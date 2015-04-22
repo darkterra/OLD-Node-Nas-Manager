@@ -6,6 +6,7 @@
   "repository": "",
   "author": "DarkTerra <darkterra01@gmail.com>",
   "dependencies": {
+    "nodegit"                : "~0.3.3",
     "bluebird"              : "~2.9.24",
     "express"               : "~4.12.3",
     "express-session"       : "~1.11.1",
