@@ -34,7 +34,7 @@ Node-NAS-Management is a Rich Web Client based EXTJS technology (that provides a
 
 
 ####What do you need to run NNM ?
-For the moment NNM is planned and optimized to run on a RPI, however the project being carried by Noje.js,
+For the moment NNM is planned and optimized to run on a RPI, however the project being carried by Node.js,
 it should work anywhere as long as you have intalled the Node.js server.
 
 In short, to run NNM, you must have:
