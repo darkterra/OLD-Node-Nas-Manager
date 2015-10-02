@@ -37,6 +37,7 @@ var socketio        = require('socket.io');
 var resumable       = require('./resumable-node.js')('tmp/');
 
 // Require des controllers
+var accueil         = require('./Controller/accueil');
 /*var compte          = require('./controllers/compte');
 var accueil         = require('./controllers/accueil');
 var oublie          = require('./controllers/oublie');
@@ -73,11 +74,13 @@ var io  = socketio.listen(http);
 
 // Template
 app.engine('html', require('ejs').renderFile);
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/View');
 app.set('view engine', 'html');
 
 // Routing
-/*app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', accueil);
+app.use(express.static(path.join(__dirname, 'Public')));
+/*
 app.use('/compte', compte);
 app.use('/', accueil);
 app.use('/oublie', oublie);
@@ -169,7 +172,7 @@ http.listen(port, function () {
   console.log('La version du serveur Node.JS : '.data + process.version.warn);
   console.log('Le serveur Node.JS fonctionne sur la plateforme : '.data + process.platform.warn);
   //console.log('La plateforme fonctionne depuis : '.data + tools.convertTimeToHuman(os.uptime()).warn);
-  console.log('Profileur du projet : https://nodetime.com/app/b3bf13f35870de/transactions\n'.info);
+  //console.log('Profileur du projet : https://nodetime.com/app/b3bf13f35870de/transactions\n'.info);
 });
 
 
