@@ -41,7 +41,7 @@ In short, to run NNM, you must have:
 * An RPI (or other more powerful computer)
 * Node.js minimum v0.12.0
 * If possible two identical disks or same size, for data redundancy (it is possible to have a single disc, but this is not recommended)
-* Of course you fork NNM
+* Of course you clone NNM
 
 After checking that you have all the prerequisites perform the following command to install all dependencies and project modules :
 
