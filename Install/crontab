@@ -18,8 +18,5 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 #####################################################################
 #                    Commandes By DarkTerra                         #
 #####################################################################
-
-00 04	* * 7	root	reboot
-
-#30 04	* * *	root	rsync -av --delete-after --exclude=NAS01/Private/Torrent/ /media/USBHDD1/ /media/USBHDD2/ > /home/pi/Logs/rsync.log 2>&1
+00 04	* * 6	root	reboot
 30 04	* * *	root	/home/pi/RSyncONCE.sh
