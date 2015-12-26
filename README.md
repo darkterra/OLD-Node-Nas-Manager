@@ -13,6 +13,17 @@ Welcome to your Node-Nas-Management (NNM) project (built on Cloud9 IDE!)
 ## What is Node-Nas-Management (NNM) ?
 
     Work In Progress
+    Install Env :
+      - sudo apt-get update && sudo apt-get upgrade -y
+      - curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
+      - sudo apt-get install -y nodejs
+      - npm install -g npm
+      - npm install
+      - pm2 link g44tyerwetm3ex3 mi2ku55gmqeehe4 [ServerName]
+      
+      
+      
+      - https://app.keymetrics.io/#/bucket/567ecee7136fc0ed30190d8a/dashboard
 Imagined for Raspberry PI (RPI), Node-Nas-Management will transform your RPI into a real NAS with Node.JS
 
 Node-Nas-Management is the first manager to NAS in Node.JS. Designed and built for Raspberry PI (RPI), but also suitable for Linux / Windows / Mac.
