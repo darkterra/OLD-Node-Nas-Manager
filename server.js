@@ -35,6 +35,7 @@ var os              = require('os');
 var colors          = require('colors');
 var socketio        = require('socket.io');
 var resumable       = require('./resumable-node.js')('tmp/');
+var shelljs         = require('shelljs');
 
 // Require des controllers
 /*var compte          = require('./controllers/compte');
@@ -77,8 +78,8 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'html');
 
 // Routing
-/*app.use(express.static(path.join(__dirname, 'public')));
-app.use('/compte', compte);
+app.use(express.static(path.join(__dirname, 'View')));
+/*app.use('/compte', compte);
 app.use('/', accueil);
 app.use('/oublie', oublie);
 app.use('/parametres', parametres);
@@ -165,11 +166,10 @@ app.get('/download/:identifier', function(req, res){
 
 // Création du serveur
 http.listen(port, function () {
-  console.log('\nNodeAion listening at 127.0.0.1:'.verbose + port.verbose);
+  console.log('\nNode Nas Management listening at 127.0.0.1:'.verbose + port.verbose);
   console.log('La version du serveur Node.JS : '.data + process.version.warn);
   console.log('Le serveur Node.JS fonctionne sur la plateforme : '.data + process.platform.warn);
-  //console.log('La plateforme fonctionne depuis : '.data + tools.convertTimeToHuman(os.uptime()).warn);
-  console.log('Profileur du projet : https://nodetime.com/app/b3bf13f35870de/transactions\n'.info);
+  // console.log('La plateforme fonctionne depuis : '.data + tools.convertTimeToHuman(os.uptime()).warn);
 });
 
 

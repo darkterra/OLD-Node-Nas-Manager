@@ -6,13 +6,29 @@
     /_/ |_/\____/\__,_/\___/     /_/ |_/\__,_/____/     /_/  /_/\__,_/_/ /_/\__,_/\__, /\___/_/ /_/ /_/\___/_/ /_/\__/  
                                                                                  /____/                                 
     --------------------------------------------------------------------------------------------------------------------
+    
+        _   __          __           _   __                 __  ___                                 
+       / | / /___  ____/ /__        / | / /___ ______      /  |/  /___ _____  ____ _____ ____  _____
+      /  |/ / __ \/ __  / _ \______/  |/ / __ `/ ___/_____/ /|_/ / __ `/ __ \/ __ `/ __ `/ _ \/ ___/
+     / /|  / /_/ / /_/ /  __/_____/ /|  / /_/ (__  )_____/ /  / / /_/ / / / / /_/ / /_/ /  __/ /    
+    /_/ |_/\____/\__,_/\___/     /_/ |_/\__,_/____/     /_/  /_/\__,_/_/ /_/\__,_/\__, /\___/_/     
+                                                                                 /____/             
 
 
-Welcome to your Node-Nas-Management (NNM) project (built on Cloud9 IDE!)
+       _  __        __        _  __            __  ___                           
+      / |/ /__  ___/ /__ ____/ |/ /__ ________/  |/  /__ ____  ___ ____ ____ ____
+     /    / _ \/ _  / -_)___/    / _ `(_-<___/ /|_/ / _ `/ _ \/ _ `/ _ `/ -_) __/
+    /_/|_/\___/\_,_/\__/   /_/|_/\_,_/___/  /_/  /_/\_,_/_//_/\_,_/\_, /\__/_/   
+                                                              /___/          
 
-## What is Node-Nas-Management (NNM) ?
+Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
+
+## What is Node-Nas-Manager (NNM) ?
 
     Work In Progress
+    
+    http://node-nas-manager-darkterra.c9users.io
+    
     Install Env :
       - sudo apt-get update && sudo apt-get upgrade -y
       - curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
@@ -24,9 +40,16 @@ Welcome to your Node-Nas-Management (NNM) project (built on Cloud9 IDE!)
       
       
       - https://app.keymetrics.io/#/bucket/567ecee7136fc0ed30190d8a/dashboard
-Imagined for Raspberry PI (RPI), Node-Nas-Management will transform your RPI into a real NAS with Node.JS
+      
+      
+      
+      
+      - TheMovieDB API KEY : 030aa3a0192fff64bad4b5465fabcb11
+      - Exemple : 'http://api.themoviedb.org/3/search/multi?query=star+wars&api_key=030aa3a0192fff64bad4b5465fabcb11&page=1&language=fr&include_image_language=fr'
+      - Img Exemple : 'http://image.tmdb.org/t/p/w92/vRYYRyKOFN7UsOD7d8tiv5xicOm.jpg'
+Imagined for Raspberry PI (RPI), Node-Nas-Manager will transform your RPI into a real NAS with Node.JS
 
-Node-Nas-Management is the first manager to NAS in Node.JS. Designed and built for Raspberry PI (RPI), but also suitable for Linux / Windows / Mac.
+Node-Nas-Manager is the first manager to NAS in Node.JS. Designed and built for Raspberry PI (RPI), but also suitable for Linux / Windows / Mac.
 
 The project has three main areas of development :
 
@@ -34,11 +57,11 @@ The project has three main areas of development :
 * Fast and Powerfull
 * Modular and Maintainable
 
-Naturally, the Node-Nas-Management solution contains all the basic functions and the advanced functions by default the most experienced initially.
+Naturally, the Node-Nas-Manager solution contains all the basic functions and the advanced functions by default the most experienced initially.
 And later by the "Modularity" project, the solution may be more complete.
-Modules developed by community will see the day in addition to those developed by the original team that created the Node-NAS-Management solution.
+Modules developed by community will see the day in addition to those developed by the original team that created the Node-Nas-Manager solution.
 
-Node-NAS-Management is a Rich Web Client based EXTJS technology (that provides a desktop interface inspire from office style) and Resumable.js
+Node-Nas-Manager is a Rich Web Client based Webix technology (that provides a desktop interface inspire from office style) and Resumable.js
 (beautiful JavaScript library providing multiple simultaneous, stable and resumable uploads via the HTML5 File API).
 
 ######This project is fully open source.
@@ -50,7 +73,7 @@ it should work anywhere as long as you have intalled the Node.js server.
 
 In short, to run NNM, you must have:
 * An RPI (or other more powerful computer)
-* Node.js minimum v0.12.0
+* Node.js minimum v5.3.0
 * If possible two identical disks or same size, for data redundancy (it is possible to have a single disc, but this is not recommended)
 * Of course you clone NNM
 
