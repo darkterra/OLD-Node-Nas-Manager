@@ -62,7 +62,7 @@ Node-Nas-Manager is a Rich Web Client based Webix technology (that provides a de
 
 ####What do you need to run NNM ?
 For the moment NNM is planned and optimized to run on a RPI, however the project being carried by Node.js,
-it should work anywhere as long as you have intalled the Node.js server.
+it should work anywhere as long as you have intalled the Node.js server (Soon!).
 
 In short, to run NNM, you must have:
 * An RPI (or other more powerful computer)
@@ -80,7 +80,7 @@ Then run the deamon :
 
 This deamon run on the Env port or if is use, on the 3000 port.
 
-####Cool ! But how do you use your new servicies, now ?
+####Cool ! But how do you use my new servicies, now ?
 
 Is very simple, take your favorite web browser and go to your ip adress of your NAS
 
