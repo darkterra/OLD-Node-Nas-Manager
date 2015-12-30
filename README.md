@@ -40,6 +40,7 @@ Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
       - TheMovieDB API KEY : 030aa3a0192fff64bad4b5465fabcb11
       - Exemple : 'http://api.themoviedb.org/3/search/multi?query=star+wars&api_key=030aa3a0192fff64bad4b5465fabcb11&page=1&language=fr&include_image_language=fr'
       - Img Exemple : 'http://image.tmdb.org/t/p/w92/vRYYRyKOFN7UsOD7d8tiv5xicOm.jpg'
+      - See : 'http://webix.com/widget/dataview/'
 Imagined for Raspberry PI (RPI), Node-Nas-Manager will transform your RPI into a real NAS with Node.JS
 
 Node-Nas-Manager is the first manager to NAS in Node.JS. Designed and built for Raspberry PI (RPI), but also suitable for Linux / Windows / Mac.
@@ -93,7 +94,7 @@ Remenber this servicies use the 3000 port (if the Env port is not use and not de
 The credential by default is :
 
 ID :
->DarkAdmin
+>NNM-Admin
 
 PassWord :
->darkadmin
+>nnm-admin
