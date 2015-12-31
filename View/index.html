@@ -41,51 +41,36 @@
           var noIMG = 'https://assets.tmdb.org/assets/7f29bd8b3370c71dd379b0e8b570887c/images/no-poster-' + tailleIMG + '-v2.png';
           noIMG = 'https://assets.tmdb.org/assets/7f29bd8b3370c71dd379b0e8b570887c/images/no-poster-w185-v2.png';
           
-          var query = 'http://api.themoviedb.org/3/search/multi?query=star+wars&api_key=030aa3a0192fff64bad4b5465fabcb11&page=1&language=fr&include_image_language=fr';
-          
-          webix.ui({
-            view: "window",
-            id: "my_win",
-            minHeight: 100,
-            height: 100,
-            minWidth: 400,
-            width: 400,
-            move: true,
-            resize: true,
-            animate:{type:"flip", subtype:"vertical"},
-            head: {
-              cols: [
-                { gravity: 3 },
-                // {},
-                { view:"button", width:80, badge:1, type:"icon", icon:"envelope", label:"Mail" },
-                { view:"button", width:80, badge:12, type:"icon", icon:"users", label:"Users" },
-                { view:"button", type: "htmlbutton", label: '<span class="webix_icon fa-close"></span>', inputWidth:40, click:("$$('my_win').close();") }
-              ]
-              // view:"button", type: "htmlbutton", label: '<span class="webix_icon fa-close"></span>', inputWidth:40, click:("$$('my_win').close();")
-              // css: "icon_back_btn", 
-            },
-            body: {
-              template: "Some text"
-            }
-          }).show();
+          var baseQuery = 'http://api.themoviedb.org/3/search/multi?query=';
+          var apiKey = '&api_key=030aa3a0192fff64bad4b5465fabcb11';
+          var nbPage = '&page=1';
+          var language = '&language=fr&include_image_language=fr';
+          var query = baseQuery + 'star+wars' + apiKey + nbPage + language;
           
           
-          var header = webix.ui({
+          
+          var header = {
             container:"dataA",
-              view: "template",
-              template:"",
-              type: "header",
-              height: 5 ,
-              rows: [
-                // { container:"dataB", id: "s1", view: "search", placeholder: "Enter symbols to filter the dataview..", css: "demo_search"}
+              // view: "template",
+              // template:"",
+              // type: "header",
+              // height: 5 ,
+              // rows: [
+              //   // { container:"dataB", id: "s1", view: "search", placeholder: "Enter symbols to filter the dataview..", css: "demo_search"}
               
-                { id: "s1", view: "search", placeholder: "Enter symbols to filter the dataview.."}
-              ]
-          });
+              //   { id: "s1", view: "search", placeholder: "Enter symbols to filter the dataview.."}
+              // ]
+            rows:[
+              {view:"template", template:"", type:"header", height:5 },
+              {cols:[
+                { id:"s1", view:"search", placeholder:"Enter symbols to filter the dataview..",
+                  css:"demo_search"/*, click: majInfo, hotkey: "enter"*/ }
+              ]}
+            ]
+          };
           
-          header.show();
           
-          var search = webix.ui({
+          var search = {
               view:"dataview",
               // container:"dataA",
               id: 'search',
@@ -125,7 +110,6 @@
       				// 		this.hideOverlay();
       				// 	}
       				// },
-      				
       				// ready: function() {
       				// 	if (!this.count()) {
       				// 		webix.extend(this, webix.OverlayBox);
@@ -135,18 +119,102 @@
               // url: query,
               xCount: 3, //the number of items in a row
               yCount: 3 //the number of items in a column
-            });
-          
-          
-          webix.ajax(query, function(data) {
-            var jsonData = JSON.parse(data);
+            };
             
-            // $$("dview").parse(data);
-            search.parse(jsonData.results);
             
-            // webix.message(JSON.stringify(jsonData.results));
             
+          var mainWindow = webix.ui({
+            view: "window",
+            id: "my_win",
+            minHeight: 100,
+            autoheight: true,
+            minWidth: 400,
+            autowidth: true,
+            move: true,
+            resize: true,
+            // modal:true,
+            animate:{type:"flip", subtype:"vertical"},
+            head: {
+              cols: [
+                {
+                  view: 'template',
+                  template: 'Recherche Film(s) / Serie(s) (TheMovieDB)'
+                },
+                // { gravity: 1 },
+                {
+                  
+                },
+                { 
+                  view:"button",
+                  type: "htmlbutton",
+                  css: 'webix_icon_button',
+                  label: '<span class="fa fa-close"></span>',
+                  autowidth:true,
+                  click:("$$('my_win').close();")
+                }
+              ]
+              // view:"button", type: "htmlbutton", label: '<span class="webix_icon fa-close"></span>', inputWidth:40, click:("$$('my_win').close();")
+              // css: "icon_back_btn",
+            },
+            body: {
+              rows: [
+                header,
+                search
+                ]
+            }
           });
+          
+          mainWindow.show();
+          
+          
+          // /*var getInfo =*/function getIngo() {
+          //     webix.ajax(query, function(data) {
+          //     var jsonData = JSON.parse(data);
+              
+          //     $$("search").parse(jsonData.results);
+          //     // search.parse(jsonData.results);
+              
+          //     // webix.message(JSON.stringify(jsonData.results));
+              
+          //   });
+          // };
+          
+          /*var majInfo =*/ function majInfo() {
+            // webix.message('toto à touché "Enter"');
+            $$("search").clearAll();
+            
+            var searchQuery = $$("s1").getValue().replace(' ', '+');
+            if (searchQuery != "") {
+              // query = baseQuery + searchQuery + apiKey + nbPage + language;
+              query = baseQuery + searchQuery + apiKey + language;
+              
+              // getIngo;
+              webix.ajax(query, function(data) {
+                var jsonData = JSON.parse(data);
+                
+                $$("search").parse(jsonData.results);
+                // search.parse(jsonData.results);
+                
+                // webix.message(JSON.stringify(jsonData.results));
+                
+              });
+            }
+          };
+          
+          $$('s1').attachEvent("onKeyPress", function(code, e) {
+            if (code === 13 && !e.ctrlKey && !e.shiftKey && !e.altKey) {
+              majInfo();
+              return false;
+            }
+          });
+          
+          
+          // webix.event($$("s1").$view, "keydown", function(){
+          //   webix.delay(function(){
+          //     query = baseQuery + $$("s1").getValue() + apiKey + nbPage + language;
+          //     getInfo;
+          //   });
+          // });
           
           // search.waitData.then(function() {
           //   var data = baseIMG + tailleIMG;

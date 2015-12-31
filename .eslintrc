@@ -9,6 +9,6 @@
   },
   "globals": {
     "webix": false,
-    "Snap": false
+    "$$": false
   }
 }
