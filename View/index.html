@@ -9,6 +9,12 @@
         height: 100%;
         padding:0;
         margin:0;
+        overflow:hidden;
+        background: url("Images/pexels-photo.jpg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
       }
     </style>
     
@@ -16,19 +22,32 @@
     <body>
       <script type="text/javascript" src="http://cdn.webix.com/edge/webix.js"></script>
       <div id="dataA"></div>
-      <div id="dataB"></div>
       <div id="item_tpl" style="display:none;">
         <div style="font-size: x-small;">
           <div style="float:left;">
             <img src="#poster_path#"/>
           </div>
-          <div style="padding: 25px 0px 0px 52px;margin-left: 50px;">
+          <div style="float:right; margin: -24px 0px 0px 0px;">
+            <p>(#media_type#)</p>
+          </div>
+          <div style="margin: 5px 0px 0px 100px;">
             <div class="webix_strong">#title#</div>
-            <ul style="list-style-type:none;margin: 0px 30px 0px -10px;float:left;" >
+            <ul style="list-style-type:none;margin: 0px 0px 0px -35px;" >
               <li> Release date: #release_date#</li>
               <li>Popularity: #popularity#</li>
             </ul>
           </div>
+        </div>
+      </div>
+      
+      
+      <div id="item_big" style="display:none;">
+        <div class="webix_strong">#title#</div>
+        <img src="#poster_path#"/>
+          <ul style="list-style-type:none;margin: 0px 30px 0px -10px;float:left;" >
+            <li> Release date: #release_date#</li>
+            <li>Popularity: #popularity#</li>
+          </ul>
         </div>
       </div>
       
@@ -51,77 +70,108 @@
           
           var header = {
             container:"dataA",
-              // view: "template",
-              // template:"",
-              // type: "header",
-              // height: 5 ,
-              // rows: [
-              //   // { container:"dataB", id: "s1", view: "search", placeholder: "Enter symbols to filter the dataview..", css: "demo_search"}
-              
-              //   { id: "s1", view: "search", placeholder: "Enter symbols to filter the dataview.."}
-              // ]
             rows:[
               {view:"template", template:"", type:"header", height:5 },
               {cols:[
-                { id:"s1", view:"search", placeholder:"Enter symbols to filter the dataview..",
+                { id:"s1", view:"search", placeholder:"Enter name of a movie or a serie...",
                   css:"demo_search"/*, click: majInfo, hotkey: "enter"*/ }
               ]}
             ]
           };
           
           
-          var search = {
-              view:"dataview",
-              // container:"dataA",
-              id: 'search',
-              select: true,
-              type: {
-                width: 300,
-                height: 150
-              },
-              template: "html->item_tpl",
-              // template: "<img src='#poster_path#'><div class='webix_strong'>#title#</div> Year: #year#, rank: #rank#",
-              
-              scheme:{
-      					$init:function(obj) {
-    					    if (obj.poster_path == null) {
-      					    webix.message('no IMG Path for this : ' + obj.title);
-      					    obj.poster_path = noIMG;
+          var resultSearch = {
+            view:"dataview",
+            id: 'resultSearch',
+            select: true,
+            type: {
+              width: 250,
+              height: 150
+            },
+            template: "html->item_tpl",
+            scheme:{
+    					$init:function(obj) {
+  					    if (obj.poster_path == null) {
+    					    webix.message('no IMG Path for this : ' + obj.title);
+    					    obj.poster_path = noIMG;
+    					  }
+    					  else {
+      					  if (obj.media_type == 'movie') {
+        						obj.poster_path = baseIMG + tailleIMG + obj.poster_path;
       					  }
-      					  else {
-        					  if (obj.media_type == 'movie') {
-          						obj.poster_path = baseIMG + tailleIMG + obj.poster_path;
-        					  }
-        					  else if (obj.media_type == 'tv') {
-        					    obj.title = obj.name;
-        					    obj.release_date = obj.first_air_date;
-        					    obj.poster_path = baseIMG + tailleIMG + obj.poster_path;
-        					  }
+      					  else if (obj.media_type == 'tv') {
+      					    obj.title = obj.name;
+      					    obj.release_date = obj.first_air_date;
+      					    obj.poster_path = baseIMG + tailleIMG + obj.poster_path;
       					  }
-      					}
-      				},
-              
-              
-          //     on: {
-      				// 	onBeforeLoad: function() {
-      				// 		this.showOverlay("Loading...");
-      				// 	},
-      				// 	onAfterLoad: function() {
-      				// 		this.hideOverlay();
-      				// 	}
-      				// },
-      				// ready: function() {
-      				// 	if (!this.count()) {
-      				// 		webix.extend(this, webix.OverlayBox);
-      				// 		this.showOverlay("<div style='margin:75px; font-size:20px;'>There is no data</div>");
-      				// 	}
-      				// },
-              // url: query,
-              xCount: 3, //the number of items in a row
-              yCount: 3 //the number of items in a column
-            };
+    					  }
+    					}
+    				},
             
             
+        //     on: {
+    				// 	onBeforeLoad: function() {
+    				// 		this.showOverlay("Loading...");
+    				// 	},
+    				// 	onAfterLoad: function() {
+    				// 		this.hideOverlay();
+    				// 	}
+    				// },
+    				// ready: function() {
+    				// 	if (!this.count()) {
+    				// 		webix.extend(this, webix.OverlayBox);
+    				// 		this.showOverlay("<div style='margin:75px; font-size:20px;'>There is no data</div>");
+    				// 	}
+    				// },
+            // url: query,
+            xCount: 3, //the number of items in a row
+            yCount: 3 //the number of items in a column
+          };
+            
+          // var scrollView = {
+          //   view: "scrollview",
+          //   id: "scrollview",
+          //   width: 300,
+          //   scroll: "y",
+          //   body: {
+          //       rows:[
+          //           { id:"verse_1", template:"html->item_big", autoheight:true, autowidth:true}//,
+          //           // { template:"<i>Scroll down for the next verse</i>", height:30},
+          //           // { id:"verse_2", template:"html->my_box2", autoheight:true},
+          //           // { template:"<i>Scroll down for the next verse</i>", height:30},
+          //           // { id:"verse_3", template:"html->my_box3", autoheight:true},
+          //           // { template:"<i>Scroll down for the next verse</i>", height:30},
+          //           // { id:"verse_4", template:"html->my_box4", autoheight:true}
+          //       ]
+          //   }
+          // };
+          
+          var resultBig = {
+            id: "resultBig",
+            view:"dataview",
+            template: "html->item_big",
+            width: 400,
+        //     scheme:{
+    				// 	$init:function(obj) {
+  					 //   if (obj.poster_path == null) {
+    				// 	    webix.message('no IMG Path for this : ' + obj.title);
+    				// 	    obj.poster_path = noIMG;
+    				// 	  }
+    				// 	  else {
+      		// 			  if (obj.media_type == 'movie') {
+        // 						obj.poster_path = baseIMG + tailleIMG + obj.poster_path;
+      		// 			  }
+      		// 			  else if (obj.media_type == 'tv') {
+      		// 			    obj.title = obj.name;
+      		// 			    obj.release_date = obj.first_air_date;
+      		// 			    obj.poster_path = baseIMG + tailleIMG + obj.poster_path;
+      		// 			  }
+    				// 	  }
+    				// 	}
+    				// },
+            // xCount: 1,
+            // yCount: 1
+          };
             
           var mainWindow = webix.ui({
             view: "window",
@@ -132,7 +182,7 @@
             autowidth: true,
             move: true,
             resize: true,
-            // modal:true,
+            modal:true,
             animate:{type:"flip", subtype:"vertical"},
             head: {
               cols: [
@@ -141,9 +191,9 @@
                   template: 'Recherche Film(s) / Serie(s) (TheMovieDB)'
                 },
                 // { gravity: 1 },
-                {
+                // {
                   
-                },
+                // },
                 { 
                   view:"button",
                   type: "htmlbutton",
@@ -159,20 +209,24 @@
             body: {
               rows: [
                 header,
-                search
-                ]
+                {cols: [
+                  resultSearch,
+                  resultBig
+                ]}
+              ]
             }
           });
           
           mainWindow.show();
           
+          $$('resultBig').bind($$('resultSearch'));
           
           // /*var getInfo =*/function getIngo() {
           //     webix.ajax(query, function(data) {
           //     var jsonData = JSON.parse(data);
               
-          //     $$("search").parse(jsonData.results);
-          //     // search.parse(jsonData.results);
+          //     $$("resultSearch").parse(jsonData.results);
+          //     // resultSearch.parse(jsonData.results);
               
           //     // webix.message(JSON.stringify(jsonData.results));
               
@@ -181,7 +235,7 @@
           
           /*var majInfo =*/ function majInfo() {
             // webix.message('toto à touché "Enter"');
-            $$("search").clearAll();
+            $$("resultSearch").clearAll();
             
             var searchQuery = $$("s1").getValue().replace(' ', '+');
             if (searchQuery != "") {
@@ -192,8 +246,8 @@
               webix.ajax(query, function(data) {
                 var jsonData = JSON.parse(data);
                 
-                $$("search").parse(jsonData.results);
-                // search.parse(jsonData.results);
+                $$("resultSearch").parse(jsonData.results);
+                // resultSearch.parse(jsonData.results);
                 
                 // webix.message(JSON.stringify(jsonData.results));
                 
@@ -216,7 +270,7 @@
           //   });
           // });
           
-          // search.waitData.then(function() {
+          // resultSearch.waitData.then(function() {
           //   var data = baseIMG + tailleIMG;
           //   webix.message(data);
           // });
