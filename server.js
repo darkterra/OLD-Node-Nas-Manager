@@ -22,6 +22,17 @@
 var messages    = [];
 var sockets     = [];
 
+
+var pmx = require('pmx').init({
+  http          : true, // HTTP routes logging (default: true)
+  ignore_routes : [/socket\.io/, /notFound/], // Ignore http routes with this pattern (Default: [])
+  errors        : true, // Exceptions loggin (default: true)
+  custom_probes : true, // Auto expose JS Loop Latency and HTTP req/s as custom metrics
+  network       : true, // Network monitoring at the application level
+  ports         : true  // Shows which ports your app is listening on (default: false)
+});
+
+
 // Requires de bases
 var express         = require('express');
 var app             = express();
@@ -36,6 +47,7 @@ var colors          = require('colors');
 var socketio        = require('socket.io');
 var resumable       = require('./resumable-node.js')('tmp/');
 var shelljs         = require('shelljs');
+
 
 // Require des controllers
 /*var compte          = require('./controllers/compte');

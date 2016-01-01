@@ -20,7 +20,8 @@
     
     </head>
     <body>
-      <script type="text/javascript" src="http://cdn.webix.com/edge/webix.js"></script>
+      <span class="fa fa-search" onclick='$$("s1").clearAll();$$("resultSearch").clearAll();$$("my_win").show();'></span>
+      
       <div id="dataA"></div>
       <div id="item_tpl" style="display:none;">
         <div style="font-size: x-small;">
@@ -44,13 +45,14 @@
       <div id="item_big" style="display:none;">
         <div class="webix_strong">#title#</div>
         <img src="#poster_path#"/>
-          <ul style="list-style-type:none;margin: 0px 30px 0px -10px;float:left;" >
+          <ul style="list-style-type:none" >
             <li> Release date: #release_date#</li>
             <li>Popularity: #popularity#</li>
           </ul>
         </div>
       </div>
       
+      <script type="text/javascript" src="http://cdn.webix.com/edge/webix.js"></script>
       <script type="text/javascript" charset="utf-8">
         webix.ready(function(){
           
@@ -74,7 +76,7 @@
               {view:"template", template:"", type:"header", height:5 },
               {cols:[
                 { id:"s1", view:"search", placeholder:"Enter name of a movie or a serie...",
-                  css:"demo_search"/*, click: majInfo, hotkey: "enter"*/ }
+                  /*css:"demo_search", click: majInfo, hotkey: "enter"*/ }
               ]}
             ]
           };
@@ -200,7 +202,7 @@
                   css: 'webix_icon_button',
                   label: '<span class="fa fa-close"></span>',
                   autowidth:true,
-                  click:("$$('my_win').close();")
+                  click:("$$('my_win').hide();")
                 }
               ]
               // view:"button", type: "htmlbutton", label: '<span class="webix_icon fa-close"></span>', inputWidth:40, click:("$$('my_win').close();")
@@ -232,6 +234,11 @@
               
           //   });
           // };
+          
+          
+          function showResultSearch() {
+            $$("my_win").show();
+          }
           
           /*var majInfo =*/ function majInfo() {
             // webix.message('toto à touché "Enter"');
