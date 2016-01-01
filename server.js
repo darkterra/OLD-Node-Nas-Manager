@@ -79,6 +79,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(sessionMiddleware);
+app.use(pmx.expressErrorHandler());
 
 // Socket io
 //require('./controllers/sockets').listen(http, sessionMiddleware, colors);
@@ -183,8 +184,6 @@ http.listen(port, function () {
   console.log('Le serveur Node.JS fonctionne sur la plateforme : '.data + process.platform.warn);
   // console.log('La plateforme fonctionne depuis : '.data + tools.convertTimeToHuman(os.uptime()).warn);
 });
-
-
 
 
 
