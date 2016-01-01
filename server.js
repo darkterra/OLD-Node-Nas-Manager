@@ -185,7 +185,10 @@ http.listen(port, function () {
   // console.log('La plateforme fonctionne depuis : '.data + tools.convertTimeToHuman(os.uptime()).warn);
 });
 
-
+// pmx.emit('user:register', {
+//   user : 'Alex registered',
+//   email : 'thorustor@gmail.com'
+// });
 
 /*io.on('connection', function (socket) {
     messages.forEach(function (data) {
