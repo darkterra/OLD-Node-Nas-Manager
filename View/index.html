@@ -20,7 +20,7 @@
     
     </head>
     <body>
-      <span class="fa fa-search" onclick='$$("s1").clearAll();$$("resultSearch").clearAll();$$("my_win").show();'></span>
+      <span class="fa fa-search" onclick='$$("s1").setValue("");$$("resultSearch").clearAll();$$("my_win").show();'></span>
       
       <div id="dataA"></div>
       <div id="item_tpl" style="display:none;">
@@ -52,6 +52,7 @@
         </div>
       </div>
       
+      <script src="/socket.io/socket.io.js"></script>
       <script type="text/javascript" src="http://cdn.webix.com/edge/webix.js"></script>
       <script type="text/javascript" charset="utf-8">
         webix.ready(function(){
@@ -184,7 +185,7 @@
             autowidth: true,
             move: true,
             resize: true,
-            modal:true,
+            // modal:true,
             animate:{type:"flip", subtype:"vertical"},
             head: {
               cols: [
@@ -219,7 +220,7 @@
             }
           });
           
-          mainWindow.show();
+          // mainWindow.show();
           
           $$('resultBig').bind($$('resultSearch'));
           
@@ -236,9 +237,11 @@
           // };
           
           
-          function showResultSearch() {
-            $$("my_win").show();
-          }
+          // function showResultSearch() {
+          //   $$("s1").setValue("");
+          //   $$("resultSearch").clearAll();
+          //   $$("my_win").show();
+          // }
           
           /*var majInfo =*/ function majInfo() {
             // webix.message('toto à touché "Enter"');

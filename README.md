@@ -8,12 +8,6 @@
                                                                                  /____/             
     ------------------------------------------------------------------------------------------------
 
-       _  __        __        _  __            __  ___                           
-      / |/ /__  ___/ /__ ____/ |/ /__ ________/  |/  /__ ____  ___ ____ ____ ____
-     /    / _ \/ _  / -_)___/    / _ `(_-<___/ /|_/ / _ `/ _ \/ _ `/ _ `/ -_) __/
-    /_/|_/\___/\_,_/\__/   /_/|_/\_,_/___/  /_/  /_/\_,_/_//_/\_,_/\_, /\__/_/   
-                                                              /___/          
-
 Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
 
 ## What is Node-Nas-Manager (NNM) ?
@@ -24,6 +18,7 @@ Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
     
     Install Env :
       - sudo apt-get update && sudo apt-get upgrade -y
+      - sudo rpi-update
       - curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
       - sudo apt-get install -y nodejs
       - npm install -g npm
@@ -33,7 +28,7 @@ Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
       
       
       - https://app.keymetrics.io/#/bucket/567ecee7136fc0ed30190d8a/dashboard
-      
+      - http://pm2.keymetrics.io/docs/usage/quick-start/
       
       
       
@@ -41,6 +36,19 @@ Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
       - Exemple : 'http://api.themoviedb.org/3/search/multi?query=star+wars&api_key=030aa3a0192fff64bad4b5465fabcb11&page=1&language=fr&include_image_language=fr'
       - Img Exemple : 'http://image.tmdb.org/t/p/w92/vRYYRyKOFN7UsOD7d8tiv5xicOm.jpg'
       - See : 'http://webix.com/widget/dataview/'
+      
+      
+      
+      - Make nodeScript for first install (Modify /boot/config.txt => overclock; gpuRAM)
+          # Modification by DarkTerra (for RPI B)
+          arm_freq=1000
+          core_freq=500
+          sdram_freq=600
+          over_voltage=6
+      - And modify (/lib/systemd/system/getty@.service) than REBOOT !
+          ExecStart=-/sbin/agetty --noclear %I $TERM
+      - And exec this (sudo systemctl set-default multi-user) than REBOOT !
+
 Imagined for Raspberry PI (RPI), Node-Nas-Manager will transform your RPI into a real NAS with Node.JS
 
 Node-Nas-Manager is the first manager to NAS in Node.JS. Designed and built for Raspberry PI (RPI), but also suitable for Linux / Windows / Mac.

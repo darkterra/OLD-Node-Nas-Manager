@@ -4,23 +4,19 @@
  * Date de modification 16/04/2015
  *
  * server.js
- *  Point d'entrée de l'application (Main) 'Node-Nas-Management' qui permet de gérer un serveur NAS
+ *  Point d'entrée de l'application (Main) 'Node-Nas-Manager' qui permet de gérer un serveur NAS
  * 
  * Conçu par l'équipe de Node-Nas-Management :
  *  - Jérémy Young      <darkterra01@gmail.com>
  */
 
+'use strict';
+
 // NNM Daemonized
-//require('daemon')();
 
-// Profileur & Moniteur de performance
-/*require('nodetime').profile({
-  accountKey: '64e613ca9dd12e185731419090cb4075a999ccad', 
-  appName: 'Node-Nas-Management'
-});*/
 
-var messages    = [];
-var sockets     = [];
+// let messages    = [];
+// let sockets     = [];
 
 
 var pmx = require('pmx').init({
@@ -34,75 +30,26 @@ var pmx = require('pmx').init({
 
 
 // Requires de bases
-var express         = require('express');
-var app             = express();
-var http            = require('http').Server(app);
-var path            = require('path');
-var favicon         = require('serve-favicon');
-var cookieParser    = require('cookie-parser');
-var bodyParser      = require('body-parser');
-var session         = require('express-session');
-var os              = require('os');
-var colors          = require('colors');
-var socketio        = require('socket.io');
-var resumable       = require('./resumable-node.js')('tmp/');
-var shelljs         = require('shelljs');
+let express         = require('express');
+let app             = express();
+let http            = require('http').Server(app);
+let path            = require('path');
+let favicon         = require('serve-favicon');
+let cookieParser    = require('cookie-parser');
+let bodyParser      = require('body-parser');
+let session         = require('express-session');
+let os              = require('os');
+let cpu             = require('cpu-load');
+let colors          = require('colors');
+// let socketio        = require('socket.io');
+let resumable       = require('./resumable-node.js')('tmp/');
+let shelljs         = require('shelljs');
 
 
 // Require des controllers
 /*var compte          = require('./controllers/compte');
 var accueil         = require('./controllers/accueil');
-var oublie          = require('./controllers/oublie');
-var parametres      = require('./controllers/parametres');
-var infosJoueur     = require('./controllers/infosJoueur');
-var administration  = require('./controllers/administration');
-var support         = require('./controllers/support');
-var legion          = require('./controllers/legion');
-var classement      = require('./controllers/classement');
-var faq             = require('./controllers/faq');
-var apropos         = require('./controllers/apropos');*/
-
-// Configuration du port
-var port = process.env.PORT || 3000;
-
-// Configuration des sessions
-var EXPRESS_SID_VALUE = 'secret keyboard cat';
-var sessionMiddleware = session({
-    secret              : EXPRESS_SID_VALUE,
-    resave              : false,
-    saveUninitialized   : true,
-});
-
-// Configuration de l'application
-//app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(sessionMiddleware);
-app.use(pmx.expressErrorHandler());
-
-// Socket io
-//require('./controllers/sockets').listen(http, sessionMiddleware, colors);
-var io  = socketio.listen(http);
-
-// Template
-app.engine('html', require('ejs').renderFile);
-app.set('views', __dirname + '/views');
-app.set('view engine', 'html');
-
-// Routing
-app.use(express.static(path.join(__dirname, 'View')));
-/*app.use('/compte', compte);
-app.use('/', accueil);
-app.use('/oublie', oublie);
-app.use('/parametres', parametres);
-app.use('/infosJoueur', infosJoueur.router);
-app.use('/administration', administration);
-app.use('/support', support);
-app.use('/legion', legion);
-app.use('/classement', classement);
-app.use('/faq', faq);
-app.use('/apropos', apropos);*/
+var oublie          = require('./controllers/oublie');*/
 
 // Configuration de la coloration des logs
 colors.setTheme({
@@ -117,6 +64,35 @@ colors.setTheme({
   debug     : 'blue',
   error     : 'red'
 });
+
+// Configuration du port
+var port = process.env.PORT || 3000;
+
+// Configuration des sessions
+var EXPRESS_SID_VALUE = 'secret keyboard cat';
+var sessionMiddleware = session({
+    secret              : EXPRESS_SID_VALUE,
+    resave              : false,
+    saveUninitialized   : true,
+});
+
+// Configuration de l'application
+app.use(favicon(__dirname + '/View/Images/favicon.ico'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(sessionMiddleware);
+app.use(pmx.expressErrorHandler());
+
+// Socket io
+require('./Controller/sockets').listen(http, sessionMiddleware, colors);
+// var io  = socketio.listen(http);
+
+// Routing
+app.use(express.static(path.join(__dirname, 'View')));
+/*app.use('/compte', compte);
+app.use('/', accueil);
+app.use('/oublie', oublie);*/
 
 /*------------------------------------------------------------------------------------------------------------------------------*/
 // Handle uploads through Resumable.js
