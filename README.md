@@ -17,12 +17,28 @@ Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
     http://node-nas-manager-darkterra.c9users.io
     
     Install Env :
+      - sudo raspi-config
+        => select (Expand Filesystem) than REBOOT !
       - sudo apt-get update && sudo apt-get upgrade -y
-      - sudo rpi-update
+      - sudo rpi-update (than REBOOT !)
+      
+                    (For RPI ARMV6 (RPI A, A+, B, B+, ZERO)
+      - wget https://nodejs.org/dist/latest/node-v5.3.0-linux-armv6l.tar.gz
+      - tar -xvf node-v5.3.0-linux-armv6l.tar.gz
+      - cd node-v5.3.0-linux-armv6l/
+      - sudo cp -R * /usr/local/
+      - suro rm -fr node-v5.3.0-linux-armv6l
+      
+      
+                    (A Supprimer ?)
       - curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
       - sudo apt-get install -y nodejs
-      - npm install -g npm
-      - npm install
+      
+      
+      
+      - sudo npm install -g npm
+      - git clone https://github.com/darkterra/Node-Nas-Manager.git
+      - sudo npm install
       - pm2 link g44tyerwetm3ex3 mi2ku55gmqeehe4 [ServerName]
       
       
@@ -45,7 +61,7 @@ Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
           core_freq=500
           sdram_freq=600
           over_voltage=6
-      - And modify (/lib/systemd/system/getty@.service) than REBOOT !
+      - And modify (/lib/systemd/system/getty@.service)
           ExecStart=-/sbin/agetty --noclear %I $TERM
       - And exec this (sudo systemctl set-default multi-user) than REBOOT !
 
