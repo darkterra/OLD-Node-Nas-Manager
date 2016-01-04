@@ -29,5 +29,25 @@
    * Deployment section
    * http://pm2.keymetrics.io/docs/usage/deployment/
    */
-  
+  deploy : {
+    production : {
+      user : "pi",
+      host : "88.178.56.66",
+      ref  : "origin/master",
+      repo : "https://github.com/darkterra/Node-Nas-Manager.git",
+      path : "/home/pi/www/production",
+      "post-deploy" : "npm install ; pm2 startOrReload ecosystem.json --env production"
+    },
+    dev : {
+      user : "pi",
+      host : "88.178.56.66",
+      ref  : "origin/master",
+      repo : "https://github.com/darkterra/Node-Nas-Manager.git",
+      path : "/home/pi/www/development",
+      "post-deploy" : "npm install ; pm2 startOrReload ecosystem.json --env dev",
+      env  : {
+        NODE_ENV: "dev"
+      }
+    }
+  }
 }
