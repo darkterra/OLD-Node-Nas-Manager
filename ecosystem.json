@@ -3,18 +3,19 @@
    * Application configuration section
    * http://pm2.keymetrics.io/docs/usage/application-declaration/
    */
-  apps : [
+  "apps" : [
 
     // First application
     {
-      name                : "NNM",
-      script              : "server.js",
-      max_memory_restart  : "200M",
-      env: {
-        COMMON_VARIABLE: "true"
+      "name"                : "NNM",
+      "script"              : "server.js",
+      "max_memory_restart"  : "200M",
+      "watch"               : true,
+      "env" : {
+        "COMMON_VARIABLE": "true"
       },
-      env_production : {
-        NODE_ENV: "production"
+      "env_production" : {
+        "NODE_ENV": "production"
       }
     }//,
 
@@ -29,24 +30,29 @@
    * Deployment section
    * http://pm2.keymetrics.io/docs/usage/deployment/
    */
-  deploy : {
-    production : {
-      user : "pi",
-      host : "88.178.56.66",
-      ref  : "origin/master",
-      repo : "https://github.com/darkterra/Node-Nas-Manager.git",
-      path : "/home/pi/www/production",
-      "post-deploy" : "npm install ; pm2 startOrReload ecosystem.json --env production"
+  "deploy"  : {
+    "production"    : {
+      "user"              : "pi",
+      "host"              : "88.178.56.66",
+      "port"              : "2223",
+      "key"               : "/home/ubuntu/workspace/keys",
+      "ref"               : "origin/master",
+      "repo"              : "https://github.com/darkterra/Node-Nas-Manager.git",
+      "path"              : "/home/pi/www/production",
+      "pre-deploy-local"  : "echo 'This is a local executed command test Prod'",
+      "post-deploy"       : "npm install ; pm2 startOrReload ecosystem.json --env production"
     },
-    dev : {
-      user : "pi",
-      host : "88.178.56.66",
-      ref  : "origin/master",
-      repo : "https://github.com/darkterra/Node-Nas-Manager.git",
-      path : "/home/pi/www/development",
-      "post-deploy" : "npm install ; pm2 startOrReload ecosystem.json --env dev",
-      env  : {
-        NODE_ENV: "dev"
+    "dev" : {
+      "user"              : "pi",
+      "host"              : "88.178.56.66",
+      "port"              : "2223",
+      "ref"               : "origin/master",
+      "repo"              : "https://github.com/darkterra/Node-Nas-Manager.git",
+      "path"              : "/home/pi/www/development",
+      "pre-deploy-local"  : "echo 'This is a local executed command test Dev'",
+      "post-deploy"       : "npm install ; pm2 startOrReload ecosystem.json --env dev",
+      "env" : {
+        "NODE_ENV"  : "dev"
       }
     }
   }
