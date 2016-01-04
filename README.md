@@ -37,6 +37,7 @@ Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
       
       
       - sudo npm install -g npm
+      - sudo npm install -g pm2
       - git clone https://github.com/darkterra/Node-Nas-Manager.git
       - sudo npm install
       - pm2 link g44tyerwetm3ex3 mi2ku55gmqeehe4 [ServerName]
@@ -51,6 +52,41 @@ Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
       - TheMovieDB API KEY : 030aa3a0192fff64bad4b5465fabcb11
       - Exemple : 'http://api.themoviedb.org/3/search/multi?query=star+wars&api_key=030aa3a0192fff64bad4b5465fabcb11&page=1&language=fr&include_image_language=fr'
       - Img Exemple : 'http://image.tmdb.org/t/p/w92/vRYYRyKOFN7UsOD7d8tiv5xicOm.jpg'
+      
+      - Ex return TheMovieDB :
+        {
+      		"adult": false,
+      		"backdrop_path": null,
+      		"genre_ids": [28, 12, 14, 878],
+      		"id": 181812,
+      		"original_language": "en",
+      		"original_title": "Star Wars: Episode IX",
+      		"overview": null,
+      		"release_date": "2019-12-31",
+      		"poster_path": "/h8nOhMGqErN5IGeE1RYZTBKZu0n.jpg",
+      		"popularity": 0.818791,
+      		"title": "Star Wars, épisode IX",
+      		"video": false,
+      		"vote_average": 9.0,
+      		"vote_count": 2,
+      		"media_type": "movie"
+      	}, {
+      		"backdrop_path": null,
+      		"first_air_date": "2015-07-11",
+      		"genre_ids": [16],
+      		"id": 63722,
+      		"original_language": "en",
+      		"original_name": "Lego Star Wars: Droid Tales",
+      		"overview": null,
+      		"origin_country": ["US"],
+      		"poster_path": "/2eSTFO6PimOGORZrhjlyU2hqeiR.jpg",
+      		"popularity": 1.480452,
+      		"name": "Lego Star Wars: Droid Tales",
+      		"vote_average": 9.0,
+      		"vote_count": 1,
+      		"media_type": "tv"
+      	}
+      
       - See : 'http://webix.com/widget/dataview/'
       
       

@@ -151,8 +151,17 @@
           
           var resultBig = {
             id: "resultBig",
-            view:"dataview",
-            template: "html->item_big",
+            // view:"dataview",
+            view:"form",
+            scroll:false,
+            
+				elements:[
+					{ view:"text", name:"title", label:"Title" },
+					{ view:"text", name:"release_date", label:"release_date" },
+					{ view:"text", name:"popularity", label:"popularity" },
+
+				],
+            // template: "html->item_big",
             width: 400,
         //     scheme:{
     				// 	$init:function(obj) {
@@ -220,9 +229,10 @@
             }
           });
           
-          // mainWindow.show();
+          mainWindow.show();
           
           $$('resultBig').bind($$('resultSearch'));
+          
           
           // /*var getInfo =*/function getIngo() {
           //     webix.ajax(query, function(data) {
@@ -243,8 +253,7 @@
           //   $$("my_win").show();
           // }
           
-          /*var majInfo =*/ function majInfo() {
-            // webix.message('toto à touché "Enter"');
+          function majInfo() {
             $$("resultSearch").clearAll();
             
             var searchQuery = $$("s1").getValue().replace(' ', '+');
