@@ -9,8 +9,8 @@
     {
       "name"                : "NNM",
       "script"              : "server.js",
-      //"max_memory_restart"  : "200M",
-      //"watch"               : true,
+      "max_memory_restart"  : "200M",
+      "watch"               : true,
       "env" : {
         "COMMON_VARIABLE": "true"
       },
