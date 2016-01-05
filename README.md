@@ -100,6 +100,11 @@ Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
       - And modify (/lib/systemd/system/getty@.service)
           ExecStart=-/sbin/agetty --noclear %I $TERM
       - And exec this (sudo systemctl set-default multi-user) than REBOOT !
+      
+      
+      - Web Tools : 
+        https://developers.google.com/
+        https://danielmiessler.com/blog/10-ways-to-test-your-website-performance/
 
 Imagined for Raspberry PI (RPI), Node-Nas-Manager will transform your RPI into a real NAS with Node.JS
 
