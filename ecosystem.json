@@ -9,14 +9,21 @@
     {
       "name"                : "NNM",
       "script"              : "server.js",
-      "watch"               : true,
+      //"max_memory_restart"  : "200M",
+      //"watch"               : true,
       "env" : {
         "COMMON_VARIABLE": "true"
       },
       "env_production" : {
         "NODE_ENV": "production"
       }
-    }
+    }//,
+
+    // Second application
+    //{
+      //name      : "WEB",
+      //script    : "web.js"
+    //}
   ],
 
   /**
