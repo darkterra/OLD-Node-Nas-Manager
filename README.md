@@ -30,7 +30,7 @@ Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
       - suro rm -fr node-v5.3.0-linux-armv6l
       
       
-                    (A Supprimer ?)
+                    (For RPI 2)
       - curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -
       - sudo apt-get install -y nodejs
       
