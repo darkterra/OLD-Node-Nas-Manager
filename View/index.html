@@ -152,16 +152,23 @@
           var resultBig = {
             id: "resultBig",
             // view:"dataview",
-            view:"form",
+            view:"dataview",
             scroll:false,
-            
-				elements:[
-					{ view:"text", name:"title", label:"Title" },
-					{ view:"text", name:"release_date", label:"release_date" },
-					{ view:"text", name:"popularity", label:"popularity" },
+            // rows:
+            // [
+            //   {view:"list", id:"title"}, 
+            //   {view:"list", id:"release_date"} 
+            // ],
+				// elements:
+				// [
+				// // 	{ view:"image", name:"poster_path" },
+				// 	{ view:"text", name:"title", label:"Title" },
+				// 	{ view:"text", name:"release_date", label:"release_date" },
+				// 	{ view:"text", name:"popularity", label:"popularity" },
 
-				],
+				// ],
             // template: "html->item_big",
+            container: "html->item_big",
             width: 400,
         //     scheme:{
     				// 	$init:function(obj) {
@@ -212,7 +219,7 @@
                   css: 'webix_icon_button',
                   label: '<span class="fa fa-close"></span>',
                   autowidth:true,
-                  click:("$$('my_win').hide();")
+                  click:('$$("s1").setValue("");$$("resultSearch").clearAll();$$("my_win").hide();')
                 }
               ]
               // view:"button", type: "htmlbutton", label: '<span class="webix_icon fa-close"></span>', inputWidth:40, click:("$$('my_win').close();")
