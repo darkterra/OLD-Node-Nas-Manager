@@ -20,7 +20,7 @@
     
     </head>
     <body>
-      <span class="fa fa-search" onclick='$$("s1").setValue("");$$("resultSearch").clearAll();$$("my_win").show();'></span>
+      <span class="fa fa-search" onclick='$$("s1").setValue("");$$("resultSearch").clearAll();$$("resultBig").clearAll();$$("my_win").show();'></span>
       
       <div id="dataA"></div>
       <div id="item_tpl" style="display:none;">
@@ -33,7 +33,7 @@
           </div>
           <div style="margin: 5px 0px 0px 100px;">
             <div class="webix_strong">#title#</div>
-            <ul style="list-style-type:none;margin: 0px 0px 0px -35px;" >
+            <ul style="list-style-type:none; margin: 50px 0px 0px -35px;" >
               <li> Release date: #release_date#</li>
               <li>Popularity: #popularity#</li>
             </ul>
@@ -42,13 +42,16 @@
       </div>
       
       
-      <div id="item_big" style="display:none;">
-        <div class="webix_strong">#title#</div>
-        <img src="#poster_path#"/>
-          <ul style="list-style-type:none" >
-            <li> Release date: #release_date#</li>
-            <li>Popularity: #popularity#</li>
-          </ul>
+      <div id="item_big" style="display:none; text-align: center;">
+        <div class="webix_strong" style="text-align: center;">#title#</div>
+        <div style="float:left; margin: 5px 0px 0px 10px;">
+          <img src="#poster_path_Big#"/>
+        </div>
+        <div style="margin: 20px 0px 0px 210px; font-size: x-small;">#overview#</div>
+        <div class="webix_icon" style="margin: 50px 0px 0px 0px;">
+          <button>
+            <span class="text"><i class="fa fa-check">OK</i></span>
+          </button>
         </div>
       </div>
       
@@ -110,86 +113,22 @@
     					  }
     					}
     				},
-            
-            
-        //     on: {
-    				// 	onBeforeLoad: function() {
-    				// 		this.showOverlay("Loading...");
-    				// 	},
-    				// 	onAfterLoad: function() {
-    				// 		this.hideOverlay();
-    				// 	}
-    				// },
-    				// ready: function() {
-    				// 	if (!this.count()) {
-    				// 		webix.extend(this, webix.OverlayBox);
-    				// 		this.showOverlay("<div style='margin:75px; font-size:20px;'>There is no data</div>");
-    				// 	}
-    				// },
-            // url: query,
             xCount: 3, //the number of items in a row
             yCount: 3 //the number of items in a column
           };
-            
-          // var scrollView = {
-          //   view: "scrollview",
-          //   id: "scrollview",
-          //   width: 300,
-          //   scroll: "y",
-          //   body: {
-          //       rows:[
-          //           { id:"verse_1", template:"html->item_big", autoheight:true, autowidth:true}//,
-          //           // { template:"<i>Scroll down for the next verse</i>", height:30},
-          //           // { id:"verse_2", template:"html->my_box2", autoheight:true},
-          //           // { template:"<i>Scroll down for the next verse</i>", height:30},
-          //           // { id:"verse_3", template:"html->my_box3", autoheight:true},
-          //           // { template:"<i>Scroll down for the next verse</i>", height:30},
-          //           // { id:"verse_4", template:"html->my_box4", autoheight:true}
-          //       ]
-          //   }
-          // };
+          
           
           var resultBig = {
             id: "resultBig",
-            // view:"dataview",
             view:"dataview",
             scroll:false,
-            // rows:
-            // [
-            //   {view:"list", id:"title"}, 
-            //   {view:"list", id:"release_date"} 
-            // ],
-				// elements:
-				// [
-				// // 	{ view:"image", name:"poster_path" },
-				// 	{ view:"text", name:"title", label:"Title" },
-				// 	{ view:"text", name:"release_date", label:"release_date" },
-				// 	{ view:"text", name:"popularity", label:"popularity" },
-
-				// ],
-            // template: "html->item_big",
-            container: "html->item_big",
-            width: 400,
-        //     scheme:{
-    				// 	$init:function(obj) {
-  					 //   if (obj.poster_path == null) {
-    				// 	    webix.message('no IMG Path for this : ' + obj.title);
-    				// 	    obj.poster_path = noIMG;
-    				// 	  }
-    				// 	  else {
-      		// 			  if (obj.media_type == 'movie') {
-        // 						obj.poster_path = baseIMG + tailleIMG + obj.poster_path;
-      		// 			  }
-      		// 			  else if (obj.media_type == 'tv') {
-      		// 			    obj.title = obj.name;
-      		// 			    obj.release_date = obj.first_air_date;
-      		// 			    obj.poster_path = baseIMG + tailleIMG + obj.poster_path;
-      		// 			  }
-    				// 	  }
-    				// 	}
-    				// },
-            // xCount: 1,
-            // yCount: 1
+            template: "html->item_big",
+            width: 500,
+            // position: 'center',
+            type: {
+              width: 500,
+              height: 450
+            }
           };
             
           var mainWindow = webix.ui({
@@ -219,7 +158,7 @@
                   css: 'webix_icon_button',
                   label: '<span class="fa fa-close"></span>',
                   autowidth:true,
-                  click:('$$("s1").setValue("");$$("resultSearch").clearAll();$$("my_win").hide();')
+                  click:('$$("s1").setValue("");$$("resultSearch").clearAll();$$("resultBig").clearAll();$$("my_win").hide();')
                 }
               ]
               // view:"button", type: "htmlbutton", label: '<span class="webix_icon fa-close"></span>', inputWidth:40, click:("$$('my_win').close();")
@@ -238,27 +177,8 @@
           
           mainWindow.show();
           
-          $$('resultBig').bind($$('resultSearch'));
+          // $$('resultBig').bind($$('resultSearch'));
           
-          
-          // /*var getInfo =*/function getIngo() {
-          //     webix.ajax(query, function(data) {
-          //     var jsonData = JSON.parse(data);
-              
-          //     $$("resultSearch").parse(jsonData.results);
-          //     // resultSearch.parse(jsonData.results);
-              
-          //     // webix.message(JSON.stringify(jsonData.results));
-              
-          //   });
-          // };
-          
-          
-          // function showResultSearch() {
-          //   $$("s1").setValue("");
-          //   $$("resultSearch").clearAll();
-          //   $$("my_win").show();
-          // }
           
           function majInfo() {
             $$("resultSearch").clearAll();
@@ -268,17 +188,40 @@
               // query = baseQuery + searchQuery + apiKey + nbPage + language;
               query = baseQuery + searchQuery + apiKey + language;
               
-              // getIngo;
               webix.ajax(query, function(data) {
                 var jsonData = JSON.parse(data);
                 
                 $$("resultSearch").parse(jsonData.results);
-                // resultSearch.parse(jsonData.results);
-                
-                // webix.message(JSON.stringify(jsonData.results));
-                
               });
             }
+          };
+          
+          function majInfoBig(item) {
+            $$('resultBig').clearAll();
+            
+            var taille_Max = 500;
+            var temp;
+            
+            if (item.poster_path.includes(tailleIMG)) {
+              temp = item.poster_path.split(tailleIMG);
+              temp = temp[0] + 'w185' + temp[1];
+              item.poster_path_Big = temp;
+            }
+            else {
+              item.poster_path_Big = noIMG;
+            }
+            
+            
+            if (item.overview !== null) {
+              if (item.overview.length > taille_Max) {
+                item.overview = item.overview.substring(0, taille_Max) + '...';
+              }
+            }
+            else {
+              item.overview = 'Not Found...';
+            }
+            
+            $$('resultBig').parse(item);
           };
           
           $$('s1').attachEvent("onKeyPress", function(code, e) {
@@ -288,21 +231,12 @@
             }
           });
           
+          $$('resultSearch').attachEvent("onItemClick", function(id, e, node){
+            majInfoBig(this.getItem(id));
+          });
           
-          // webix.event($$("s1").$view, "keydown", function(){
-          //   webix.delay(function(){
-          //     query = baseQuery + $$("s1").getValue() + apiKey + nbPage + language;
-          //     getInfo;
-          //   });
-          // });
           
-          // resultSearch.waitData.then(function() {
-          //   var data = baseIMG + tailleIMG;
-          //   webix.message(data);
-          // });
         });
-        
-        
       </script>
     </body>
 </html>
