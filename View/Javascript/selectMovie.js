@@ -78,7 +78,7 @@ webix.ready(function(){
     autowidth: true,
     move: true,
     resize: true,
-    // modal:true,
+    modal:true,
     animate:{type:"flip", subtype:"vertical"},
     head: {
       cols: [
