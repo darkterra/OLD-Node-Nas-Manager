@@ -2,7 +2,7 @@
   "name": "Node-Nas-Management",
   "version": "0.0.0",
   "homepage": "https://github.com/darkterra/Node-Nas-Manager",
-  "description": "BackEnd full Javascript (Node.js + Webix + Resumable.js) for NAS",
+  "description": "FullStack Javascript (Node.js + Webix + Resumable.js) for NAS",
   "main": "server.js",
   "author": "DarkTerra <darkterra01@gmail.com>",
   "license": "AGPL-3.0",
@@ -43,7 +43,7 @@
     "url": "https://github.com/darkterra/Node-Nas-Manager.git"
   },
   "engines": {
-    "node": ">=5.3.0"
+    "node": ">=5.5.0"
   },
   "os": [
     "!win32"

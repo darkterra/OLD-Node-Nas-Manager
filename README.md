@@ -117,7 +117,7 @@ The project has three main areas of development :
 * Modular and Maintainable
 
 Naturally, the Node-Nas-Manager solution contains all the basic functions and the advanced functions by default the most experienced initially.
-And later by the "Modularity" project, the solution may be more complete.
+And later by the "Modularity" areas, the solution may be more complete.
 Modules developed by community will see the day in addition to those developed by the original team that created the Node-Nas-Manager solution.
 
 Node-Nas-Manager is a Rich Web Client based Webix technology (that provides a desktop interface inspire from office style) and Resumable.js
@@ -132,9 +132,11 @@ it should work anywhere as long as you have intalled the Node.js server (Soon!).
 
 In short, to run NNM, you must have:
 * An RPI (or other more powerful computer)
-* Node.js minimum v5.3.0
+* Node.js minimum v5.5.0
 * If possible two identical disks or same size, for data redundancy (it is possible to have a single disc, but this is not recommended)
-* Of course you clone NNM
+* Of course you clone NNM (or you can purchase an SD / Micro SD Card preinstalled by me)
+
+######Or you can purchase a ready -to-use RPI (2B / ZERO ) with a Micro SD card preinstalled by me.
 
 After checking that you have all the prerequisites perform the following command to install all dependencies and project modules :
 
