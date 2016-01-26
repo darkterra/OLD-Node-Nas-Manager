@@ -120,7 +120,7 @@ Naturally, the Node-Nas-Manager solution contains all the basic functions and th
 And later by the "Modularity" areas, the solution may be more complete.
 Modules developed by community will see the day in addition to those developed by the original team that created the Node-Nas-Manager solution.
 
-Node-Nas-Manager is a Rich Web Client based Webix technology (that provides a desktop interface inspire from office style) and Resumable.js
+Node-Nas-Manager is a Rich Web Client based on Webix technology (that provides a desktop interface inspire from office style) and Resumable.js
 (beautiful JavaScript library providing multiple simultaneous, stable and resumable uploads via the HTML5 File API).
 
 ######This project is fully open source.
