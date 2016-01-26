@@ -1,18 +1,47 @@
-webix.ready(function(){
-  var baseIMG = 'http://image.tmdb.org/t/p/';
-  var tailleIMG = 'w92';
-  var noIMG = 'https://assets.tmdb.org/assets/7f29bd8b3370c71dd379b0e8b570887c/images/no-poster-' + tailleIMG + '-v2.png';
+/**
+ * 
+ * TMDBLin.js : 
+**/
+
+'use strict';
+let App = App || {};
+
+// ,
+//   renameTMDB: 'Rename with TMDB',
+
+
+// , {
+//           id: 'editTMDB',
+//           batch: 'item',
+//           method: 'editFileTMDB',
+//           icon: 'edit',
+//           value: webix.i18n.filemanager.renameTMDB
+//         },
+
+
+// editFileTMDB: function(t) {
+//     // webix.isArray(t) && (t = t[0]), this.getActiveView() && this.getActiveView().edit && this.getActiveView().edit(t);
+//     // webix.message(webix.isArray(t));
+//     $$("s1").setValue("");$$("resultSearch").clearAll();$$("resultBig").clearAll();$$("my_win").show();
+//   },
+
+
+
+App.FileManager = (function(self, extentionName) {
+  let baseIMG = 'http://image.tmdb.org/t/p/';
+  let tailleIMG = 'w92';
+  let noIMG = 'https://assets.tmdb.org/assets/7f29bd8b3370c71dd379b0e8b570887c/images/no-poster-' + tailleIMG + '-v2.png';
   noIMG = 'https://assets.tmdb.org/assets/7f29bd8b3370c71dd379b0e8b570887c/images/no-poster-w185-v2.png';
   
-  var baseQuery = 'http://api.themoviedb.org/3/search/multi?query=';
-  var apiKey = '&api_key=030aa3a0192fff64bad4b5465fabcb11';
-  var nbPage = '&page=1';
-  var language = '&language=fr&include_image_language=fr';
-  var query = baseQuery + 'star+wars' + apiKey + nbPage + language;
+  let baseQuery = 'http://api.themoviedb.org/3/search/multi?query=';
+  let apiKey = '&api_key=030aa3a0192fff64bad4b5465fabcb11';
+  let nbPage = '&page=1';
+  let language = '&language=fr&include_image_language=fr';
+  let query = baseQuery + 'star+wars' + apiKey + nbPage + language;
   
   
   
-  var header = {
+  let header = {
     container:"dataA",
     rows:[
       {view:"template", template:"", type:"header", height:5 },
@@ -24,7 +53,7 @@ webix.ready(function(){
   };
   
   
-  var resultSearch = {
+  let resultSearch = {
     view:"dataview",
     id: 'resultSearch',
     select: true,
@@ -56,7 +85,7 @@ webix.ready(function(){
   };
   
   
-  var resultBig = {
+  let resultBig = {
     id: "resultBig",
     view:"dataview",
     scroll:false,
@@ -69,7 +98,7 @@ webix.ready(function(){
     }
   };
     
-  var mainWindow = webix.ui({
+  let mainWindow = webix.ui({
     view: "window",
     id: "my_win",
     minHeight: 100,
@@ -173,4 +202,9 @@ webix.ready(function(){
   $$('resultSearch').attachEvent("onItemClick", function(id, e, node){
     majInfoBig(this.getItem(id));
   });
-});
+  
+  console.log(extentionName);
+})(App.FileManager || {}, 'SelectMovieExtention');
+
+
+export default App;

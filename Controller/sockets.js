@@ -16,16 +16,14 @@
 let socketio			= require('socket.io');
 // let infos					= require('./infosJoueur');
 // let connection		= require('../sql/requestPlayer');
-let EventEmitter	= require('events').EventEmitter;
 let escape_html		= require('escape-html');
 
-module.exports.listen = function(server, sessionMiddleware, colors) {
+module.exports.listen = function(server, sessionMiddleware, ServerEvent, colors) {
     let io						= socketio.listen(server);
     let messages			= [];
     let text					= '';
     let data					= '';
     let numUser				= 0;
-    let ctrlUser			= new EventEmitter();
     
     // Configuration de Socket.IO pour pouvoir avoir accès au sessions
 		io.use(function(socket, next) {
@@ -46,21 +44,21 @@ module.exports.listen = function(server, sessionMiddleware, colors) {
 		messages.push(init);
     
     // Ajout d'un utilisateur au compteur
-    ctrlUser.on('numUser++', function(){
-			++numUser;
-			sendMajTitre('numUser++');
-    });
+  //   ctrlUser.on('numUser++', function(){
+		// 	++numUser;
+		// 	sendMajTitre('numUser++');
+  //   });
     
-    // Suppression d'un utilisateur au compeur
-    ctrlUser.on('numUser--', function(){
-    	if (numUser > 0) {
-				--numUser;
-				sendMajTitre('numUser--');
-			}
-			else {
-				console.log('Nombre d\'utilisateur en négatif !!'.error);
-			}
-		});
+  //   // Suppression d'un utilisateur au compeur
+  //   ctrlUser.on('numUser--', function(){
+  //   	if (numUser > 0) {
+		// 		--numUser;
+		// 		sendMajTitre('numUser--');
+		// 	}
+		// 	else {
+		// 		console.log('Nombre d\'utilisateur en négatif !!'.error);
+		// 	}
+		// });
     
     // Fonction de MAJ du titre
     function sendMajTitre(msg) {
@@ -80,9 +78,16 @@ module.exports.listen = function(server, sessionMiddleware, colors) {
 		// setInterval(function () {
 		// 	getNbPlayers(io, tabGraph);
 		// }, 1000 * 60); // toutes les minutes
+    var test = '';
+    
+    ServerEvent.on('DataRead', function(data) {
+    	test = data;
+    });
     
     // Ouverture de la socket
     io.sockets.on('connection', function (socket) {
+    	
+    	io.sockets.emit('ModulesToLoad', test);
     	/***********************************************************************************
 			*															Initialisation du Site														   *
 			***********************************************************************************/
@@ -99,21 +104,21 @@ module.exports.listen = function(server, sessionMiddleware, colors) {
 			***********************************************************************************/
 			
 			// ----------------------- Init du Chat ----------------------- //
-			if (socket.request.session.User !== undefined) {
+			// if (socket.request.session.User !== undefined) {
 				
-				ctrlUser.emit('numUser++');
-				data = {
-					Name					: socket.request.session.User.name,
-					Access_Level	: socket.request.session.User.access_level
-				};
-				socket.emit('initChat',  data);
-			}
+			// 	// ctrlUser.emit('numUser++');
+			// 	data = {
+			// 		Name					: socket.request.session.User.name,
+			// 		Access_Level	: socket.request.session.User.access_level
+			// 	};
+			// 	socket.emit('initChat',  data);
+			// }
 			
 			// ----------------------- Décompte uniquement des User Connecté ----------------------- //
 			socket.on('disconnect', function(){
-				if (socket.request.session.User !== undefined) {
-					ctrlUser.emit('numUser--');
-				}
+				// if (socket.request.session.User !== undefined) {
+				// 	// ctrlUser.emit('numUser--');
+				// }
 			});
 			
 			// ----------------------- Send Histo ---------------------- //
@@ -131,7 +136,7 @@ module.exports.listen = function(server, sessionMiddleware, colors) {
 			
 			// ----------------------- Add User After RAZ ----------------------- //
 			socket.on('I am a real user, not a bot', function(data) {
-				ctrlUser.emit('numUser++');
+				// ctrlUser.emit('numUser++');
 			});
 			
 			// ----------------------- Send Chat Message ----------------------- //

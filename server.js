@@ -12,13 +12,6 @@
 
 'use strict';
 
-// NNM Daemonized
-
-
-// let messages    = [];
-// let sockets     = [];
-
-
 var pmx = require('pmx').init({
   http          : true, // HTTP routes logging (default: true)
   ignore_routes : [/socket\.io/, /notFound/], // Ignore http routes with this pattern (Default: [])
@@ -44,6 +37,7 @@ let colors          = require('colors');
 // let socketio        = require('socket.io');
 let resumable       = require('./resumable-node.js')('tmp/');
 let shelljs         = require('shelljs');
+let fs              = require('fs');
 
 
 // Require des controllers
@@ -85,7 +79,10 @@ app.use(sessionMiddleware);
 app.use(pmx.expressErrorHandler());
 
 // Socket io
-require('./Controller/sockets').listen(http, sessionMiddleware, colors);
+
+let EventEmitter	= require('events').EventEmitter;
+let ServerEvent			= new EventEmitter();
+require('./Controller/sockets').listen(http, sessionMiddleware, ServerEvent, colors);
 // var io  = socketio.listen(http);
 
 // Routing
@@ -94,64 +91,10 @@ app.use(express.static(path.join(__dirname, 'View')));
 app.use('/', accueil);
 app.use('/oublie', oublie);*/
 
-/*------------------------------------------------------------------------------------------------------------------------------*/
-// Handle uploads through Resumable.js
-app.post('/upload', function(req, res){
-  //console.log(req);
-  
-  resumable.post(req, function(status, filename, original_filename, identifier, nomFinal){
-    //console.log('POST', status, original_filename, identifier);
-    
-    if (status == 'done') {
-      var racine            = "/home/pi/www/";
-      var path              = racine + "finish/";
-      var nomFinal          = req.param('nom_Final');
-      var directoryName     = path + '' + req.param('film_Or_Serie') + '/' + nomFinal + '(' +  req.param('anne_Film') + ')';
-      var destFileFinal     = directoryName + '/';
-      var resumableFilename = req.param('resumableFilename');
-      
-      var fs = require('fs');
-      
-      nomFinal = nomFinal + '.' + resumableFilename.substr((resumableFilename.lastIndexOf('.') +1));
-      
-      fs.exists(destFileFinal, function (exists) {
-        if (! exists) {
-          shelljs.mkdir('-p', destFileFinal);
-        }
-        destFileFinal = destFileFinal + '' + nomFinal;
-        
-        var ws = fs.createWriteStream(destFileFinal);
-        
-        resumable.write(identifier, ws);
-        ws.on('finish', function() {
-          console.log('Fichier : ' + nomFinal + ' Enregistré...');
-          shelljs.rm('-rf', 'temp/*' + identifier + '*');
-        });
-      });
-    }
-    
-    res.send(status, {
-      // NOTE: Uncomment this funciton to enable cross-domain request.
-      //'Access-Control-Allow-Origin': '*'
-    });
-  });
+fs.readFile(__dirname + '/View/Javascript/data.json', 'utf8', (err, data) => {
+  if (err) throw err;
+  ServerEvent.emit('DataRead', data);
 });
-
-// Handle status checks on chunks through Resumable.js
-app.get('/upload', function(req, res){
-  resumable.get(req, function(status, filename, original_filename, identifier){
-    //console.log('GET', status);
-    res.send((status == 'found' ? 200 : 404), status);
-  });
-});
-
-app.get('/download/:identifier', function(req, res){
-  resumable.write(req.params.identifier, res);
-});
-
-/*------------------------------------------------------------------------------------------------------------------------------*/
-
-
 
 // Création du serveur
 http.listen(port, function () {
@@ -166,47 +109,61 @@ http.listen(port, function () {
 //   email : 'thorustor@gmail.com'
 // });
 
-/*io.on('connection', function (socket) {
-    messages.forEach(function (data) {
-      socket.emit('message', data);
-    });
 
-    sockets.push(socket);
 
-    socket.on('disconnect', function () {
-      sockets.splice(sockets.indexOf(socket), 1);
-    });
+/*------------------------------------------------------------------------------------------------------------------------------*/
+// Handle uploads through Resumable.js
+// app.post('/upload', function(req, res){
+//   //console.log(req);
+  
+//   resumable.post(req, function(status, filename, original_filename, identifier, nomFinal){
+//     //console.log('POST', status, original_filename, identifier);
+    
+//     if (status == 'done') {
+//       var racine            = "/home/pi/www/";
+//       var path              = racine + "finish/";
+//       var nomFinal          = req.param('nom_Final');
+//       var directoryName     = path + '' + req.param('film_Or_Serie') + '/' + nomFinal + '(' +  req.param('anne_Film') + ')';
+//       var destFileFinal     = directoryName + '/';
+//       var resumableFilename = req.param('resumableFilename');
+      
+//       var fs = require('fs');
+      
+//       nomFinal = nomFinal + '.' + resumableFilename.substr((resumableFilename.lastIndexOf('.') +1));
+      
+//       fs.exists(destFileFinal, function (exists) {
+//         if (! exists) {
+//           shelljs.mkdir('-p', destFileFinal);
+//         }
+//         destFileFinal = destFileFinal + '' + nomFinal;
+        
+//         var ws = fs.createWriteStream(destFileFinal);
+        
+//         resumable.write(identifier, ws);
+//         ws.on('finish', function() {
+//           console.log('Fichier : ' + nomFinal + ' Enregistré...');
+//           shelljs.rm('-rf', 'temp/*' + identifier + '*');
+//         });
+//       });
+//     }
+    
+//     res.send(status, {
+//       // NOTE: Uncomment this funciton to enable cross-domain request.
+//       //'Access-Control-Allow-Origin': '*'
+//     });
+//   });
+// });
 
-    socket.on('message', function (msg) {
-      var text = String(msg || '');
+// // Handle status checks on chunks through Resumable.js
+// app.get('/upload', function(req, res){
+//   resumable.get(req, function(status, filename, original_filename, identifier){
+//     //console.log('GET', status);
+//     res.send((status == 'found' ? 200 : 404), status);
+//   });
+// });
 
-      if (!text)
-        return;
+// app.get('/download/:identifier', function(req, res){
+//   resumable.write(req.params.identifier, res);
+// });
 
-      socket.get('name', function (err, name) {
-        var data = {
-          name: name,
-          text: text
-        };
-
-        broadcast('message', data);
-        messages.push(data);
-      });
-    });
-
-    socket.on('identify', function (name) {
-      socket.set('name', String(name || 'Anonymous'), function (err) {
-      });
-    });
-  });
-
-function broadcast(event, data) {
-  sockets.forEach(function (socket) {
-    socket.emit(event, data);
-  });
-}
-
-server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
-  var addr = server.address();
-  console.log("Chat server listening at", addr.address + ":" + addr.port);
-});*/
+/*------------------------------------------------------------------------------------------------------------------------------*/
