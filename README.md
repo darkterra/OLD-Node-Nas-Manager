@@ -134,9 +134,9 @@ In short, to run NNM, you must have:
 * An RPI (or other more powerful computer)
 * Node.js minimum v5.5.0
 * If possible two identical disks or same size, for data redundancy (it is possible to have a single disc, but this is not recommended)
-* Of course you clone NNM (or you can purchase an SD / Micro SD Card preinstalled by me)
+* Of course you clone NNM (or you can purchase an SD / Micro SD card preinstalled by me)
 
-######Or you can purchase a ready -to-use RPI (2B / ZERO ) with a Micro SD card preinstalled by me.
+######Or you can purchase a ready-to-use RPI (2B / ZERO ) with a Micro SD card preinstalled by me.
 
 After checking that you have all the prerequisites perform the following command to install all dependencies and project modules :
 
