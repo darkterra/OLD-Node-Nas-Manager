@@ -90,11 +90,13 @@ app.use(express.static(path.join(__dirname, 'View')));
 /*app.use('/compte', compte);
 app.use('/', accueil);
 app.use('/oublie', oublie);*/
-
-fs.readFile(__dirname + '/View/Javascript/data.json', 'utf8', (err, data) => {
-  if (err) throw err;
-  ServerEvent.emit('DataRead', data);
+ServerEvent.on('ReloadModule', function() {
+  fs.readFile(__dirname + '/View/Javascript/data.json', 'utf8', (err, data) => {
+    if (err) throw err;
+    ServerEvent.emit('DataRead', data);
+  });
 });
+
 
 // Création du serveur
 http.listen(port, function () {

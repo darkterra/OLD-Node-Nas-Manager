@@ -1,5 +1,5 @@
 'use strict';
-let App = App || {};
+let NNM = NNM || {};
 
 export const sqrt = Math.sqrt;
 

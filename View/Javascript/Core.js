@@ -4,7 +4,7 @@
 **/
 
 'use strict';
-let App = App || {};
+let NNM = NNM || {};
 
 let socket = io();
 
@@ -18,14 +18,13 @@ socket.on('ModulesToLoad', function (data) {
   let temp = JSON.parse(data);
   webix.ready(function(){
     temp.NameModules.forEach (function(module, index) {
-      App = System.import(module);
+      System.import(module);
+      console.log('Chargement du module: ' + module);
     });
   });
 });
 
 console.log(lib.sqrt);
 console.log(lib.pow(12));
-console.log(App);
-
 
 

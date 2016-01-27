@@ -1,5 +1,6 @@
 {
 	"NameModules": [
-		"selectMovie.js"
+		"TMDB_Link.js",
+		"KODI_Link.js"
 	]
 }

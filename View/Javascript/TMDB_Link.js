@@ -1,10 +1,10 @@
 /**
  * 
- * TMDBLin.js : 
+ * TMDB_Link.js : 
 **/
 
 'use strict';
-let App = App || {};
+let NNM = NNM || {};
 
 // ,
 //   renameTMDB: 'Rename with TMDB',
@@ -27,7 +27,7 @@ let App = App || {};
 
 
 
-App.FileManager = (function(self, extentionName) {
+NNM.FileManager = (function(self, extentionName) {
   let baseIMG = 'http://image.tmdb.org/t/p/';
   let tailleIMG = 'w92';
   let noIMG = 'https://assets.tmdb.org/assets/7f29bd8b3370c71dd379b0e8b570887c/images/no-poster-' + tailleIMG + '-v2.png';
@@ -203,8 +203,8 @@ App.FileManager = (function(self, extentionName) {
     majInfoBig(this.getItem(id));
   });
   
-  console.log(extentionName);
-})(App.FileManager || {}, 'SelectMovieExtention');
+  // console.log(extentionName);
+})(NNM.FileManager || {}, 'SelectMovieExtention');
 
 
-export default App;
+export default NNM;

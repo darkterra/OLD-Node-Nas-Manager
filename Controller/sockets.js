@@ -78,6 +78,14 @@ module.exports.listen = function(server, sessionMiddleware, ServerEvent, colors)
 		// setInterval(function () {
 		// 	getNbPlayers(io, tabGraph);
 		// }, 1000 * 60); // toutes les minutes
+		
+		function ReloadModule(socket) {
+			ServerEvent.emit('ReloadModule');
+			socket.emit('ModulesToLoad', test);
+		}
+		
+    ServerEvent.emit('ReloadModule');
+    
     var test = '';
     
     ServerEvent.on('DataRead', function(data) {
@@ -87,7 +95,10 @@ module.exports.listen = function(server, sessionMiddleware, ServerEvent, colors)
     // Ouverture de la socket
     io.sockets.on('connection', function (socket) {
     	
-    	io.sockets.emit('ModulesToLoad', test);
+    	//socket.emit('ModulesToLoad', test);
+    	ReloadModule(socket);
+    	
+    	// socket.on('ReloadModule', ReloadModule(socket));
     	/***********************************************************************************
 			*															Initialisation du Site														   *
 			***********************************************************************************/
