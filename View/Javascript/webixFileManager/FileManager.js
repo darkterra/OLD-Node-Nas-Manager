@@ -7,17 +7,8 @@
 let NNM = NNM || {};
 
 NNM.FileManager = (function(self, extentionName) {
-  self.toto = 'Yo Toto';
-  // console.log(NNM);
-  console.log(self);
-  return self;
+  
 })(NNM.FileManager || {}, 'FileManager');
-
-// NNM.FileManager = (function(self, extentionName) {
-//   self.titi = 'Yup  dqf TiTi';
-//   console.log(self);
-//   return self;
-// })(NNM.FileManager || {}, 'FileManager');
 
 webix.type(webix.ui.tree, {
   name: 'FileTree',
@@ -140,7 +131,7 @@ webix.type(webix.ui.tree, {
               ('upload' != e || !webix.isUndefined(XMLHttpRequest) && !webix.isUndefined((new XMLHttpRequest).upload)) && (t.Uq(!0), t.hide());
               var r = [a];
               'upload' == e && (i = webix.html.pos(i), r.push(i)), webix.delay(function() {
-                n.NNMly(this, r), this.callEvent('onafter' + (s.method || e), []);
+                n.apply(this, r), this.callEvent('onafter' + (s.method || e), []);
               }, this);
             }
           }
@@ -674,7 +665,7 @@ webix.type(webix.ui.tree, {
   zv: function(t) {
     var e = this.structure.mainLayout,
         i = webix.extend({}, e.config || e);
-    return this.Sw(i, t), t.on && t.on.onViewInit && t.on.onViewInit.NNMly(this, [t.id || 'mainLayout', i]), webix.callEvent('onViewInit', [t.id || 'mainLayout', i, this]), i;
+    return this.Sw(i, t), t.on && t.on.onViewInit && t.on.onViewInit.apply(this, [t.id || 'mainLayout', i]), webix.callEvent('onViewInit', [t.id || 'mainLayout', i, this]), i;
   },
   updateStructure: function() {
     var t = this.zv(),
@@ -692,7 +683,7 @@ webix.type(webix.ui.tree, {
               var h = webix.extend({}, this.structure[a]);
               i[n] = this.qx(h, e), i[n].id = a, h.oninit && this.$ready.push(h.oninit);
             } else i[n] = {};
-          this.Sw(i[n], e), s && (e.on && e.on.onViewInit && e.on.onViewInit.NNMly(this, [s, i[n]]), webix.callEvent('onViewInit', [s, i[n], this]));
+          this.Sw(i[n], e), s && (e.on && e.on.onViewInit && e.on.onViewInit.apply(this, [s, i[n]]), webix.callEvent('onViewInit', [s, i[n], this]));
       }
   },
   lx: function() {
@@ -1208,7 +1199,6 @@ webix.type(webix.ui.tree, {
     }
   }
 }, webix.FileManagerUpload, webix.FileManagerStructure, webix.ProgressBar, webix.IdSpace, webix.ui.layout, webix.TreeDataMove, webix.TreeDataLoader, webix.DataLoader, webix.EventSystem, webix.Settings);
-
 
 export default
 webix.ready(function(){
