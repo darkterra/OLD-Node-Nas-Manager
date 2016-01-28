@@ -71,7 +71,7 @@ var sessionMiddleware = session({
 });
 
 // Configuration de l'application
-app.use(compression());
+app.use(compression({filter: shouldCompress}));
 app.use(favicon(__dirname + '/View/Images/favicon.ico'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -99,6 +99,15 @@ ServerEvent.on('ReloadModule', function() {
   });
 });
 
+function shouldCompress(req, res) {
+  if (req.headers['x-no-compression']) {
+    // don't compress responses with this request header 
+    return false;
+  }
+ 
+  // fallback to standard filter function 
+  return compression.filter(req, res);
+}
 
 // Création du serveur
 http.listen(port, function () {
