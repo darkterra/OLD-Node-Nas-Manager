@@ -4,6 +4,7 @@
 **/
 
 'use strict';
+
 let NNM = NNM || {};
 
 let socket = io();

@@ -25,6 +25,7 @@ var pmx = require('pmx').init({
 // Requires de bases
 let express         = require('express');
 let app             = express();
+let compression     = require('compression');
 let http            = require('http').Server(app);
 let path            = require('path');
 let favicon         = require('serve-favicon');
@@ -34,7 +35,6 @@ let session         = require('express-session');
 let os              = require('os');
 let cpu             = require('cpu-load');
 let colors          = require('colors');
-// let socketio        = require('socket.io');
 let resumable       = require('./resumable-node.js')('tmp/');
 let shelljs         = require('shelljs');
 let fs              = require('fs');
@@ -71,6 +71,7 @@ var sessionMiddleware = session({
 });
 
 // Configuration de l'application
+app.use(compression());
 app.use(favicon(__dirname + '/View/Images/favicon.ico'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -78,10 +79,11 @@ app.use(cookieParser());
 app.use(sessionMiddleware);
 app.use(pmx.expressErrorHandler());
 
-// Socket io
-
+// Events
 let EventEmitter	= require('events').EventEmitter;
 let ServerEvent			= new EventEmitter();
+
+// Socket io
 require('./Controller/sockets').listen(http, sessionMiddleware, ServerEvent, colors);
 // var io  = socketio.listen(http);
 
