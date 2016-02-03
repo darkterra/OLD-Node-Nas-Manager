@@ -2,5 +2,6 @@
 	"NameModules": [
 		"TMDB_Link.js",
 		"KODI_Link.js"
-	]
+	],
+	"PathToScan": "/home/ubuntu/workspace/"
 }

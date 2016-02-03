@@ -7,7 +7,7 @@
 
 let NNM = NNM || {};
 
-let socket = io();
+NNM.socket = io();
 
 // ES6 Static Legacy Import
 import * as lib from 'lib.js';
@@ -15,7 +15,7 @@ import 'webixFileManager/FileManager.js';
 
 
 // API Dynamic Loader
-socket.on('ModulesToLoad', function (data) {
+NNM.socket.on('ModulesToLoad', function (data) {
   let temp = JSON.parse(data);
   webix.ready(function(){
     temp.NameModules.forEach (function(module, index) {
@@ -25,7 +25,12 @@ socket.on('ModulesToLoad', function (data) {
   });
 });
 
+NNM.socket.emit('ScanNAS');
+
+NNM.socket.on('NASScaned', function(data) {
+  console.log('Scan Receved: ' + JSON.stringify(data));
+});
+
+
 console.log(lib.sqrt);
 console.log(lib.pow(12));
-
-

@@ -32,18 +32,22 @@ let favicon         = require('serve-favicon');
 let cookieParser    = require('cookie-parser');
 let bodyParser      = require('body-parser');
 let session         = require('express-session');
-let os              = require('os');
-let cpu             = require('cpu-load');
+// let os              = require('os');
+// let cpu             = require('cpu-load');
 let colors          = require('colors');
-let resumable       = require('./resumable-node.js')('tmp/');
-let shelljs         = require('shelljs');
+// let resumable       = require('./resumable-node.js')('tmp/');
+// let shelljs         = require('shelljs');
 let fs              = require('fs');
+let scanNAS         = require('./Controller/scanNAS');
 
 
 // Require des controllers
 /*var compte          = require('./controllers/compte');
 var accueil         = require('./controllers/accueil');
 var oublie          = require('./controllers/oublie');*/
+
+// Variables
+let   dataJson = "";
 
 // Configuration de la coloration des logs
 colors.setTheme({
@@ -80,23 +84,33 @@ app.use(sessionMiddleware);
 app.use(pmx.expressErrorHandler());
 
 // Events
-let EventEmitter	= require('events').EventEmitter;
+let EventEmitter    = require('events').EventEmitter;
 let ServerEvent			= new EventEmitter();
 
 // Socket io
 require('./Controller/sockets').listen(http, sessionMiddleware, ServerEvent, colors);
-// var io  = socketio.listen(http);
+
 
 // Routing
 app.use(express.static(path.join(__dirname, 'View')));
-/*app.use('/compte', compte);
-app.use('/', accueil);
-app.use('/oublie', oublie);*/
+/*app.use('/compte', compte);*/
+
+
 ServerEvent.on('ReloadModule', function() {
-  fs.readFile(__dirname + '/View/Javascript/data.json', 'utf8', (err, data) => {
+  fs.readFile(__dirname + '/data.json', 'utf8', (err, data) => {
     if (err) throw err;
-    ServerEvent.emit('DataRead', data);
+    dataJson = data;
+    ServerEvent.emit('DataRead', dataJson);
   });
+});
+
+ServerEvent.on('ScanNAS', (socket) => {
+  var params = {
+    socket: socket,
+    ServerEvent: ServerEvent
+  };
+  // ScanNAS
+  scanNAS.scan(JSON.parse(dataJson).PathToScan, params);
 });
 
 function shouldCompress(req, res) {
@@ -104,7 +118,6 @@ function shouldCompress(req, res) {
     // don't compress responses with this request header 
     return false;
   }
- 
   // fallback to standard filter function 
   return compression.filter(req, res);
 }

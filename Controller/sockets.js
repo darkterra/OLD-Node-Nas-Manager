@@ -33,15 +33,26 @@ module.exports.listen = function(server, sessionMiddleware, ServerEvent, colors)
 	    });
 		}
 		
-    ServerEvent.emit('ReloadModule');
-    
+		// function ScanNAS(socket) {
+		// 	ServerEvent.emit('ScanNAS');
+		// 	ServerEvent.on('DataRead', function(data) {
+		// 		test = data;
+		// 		// TODO : socket.emit('ModulesToLoad', test);
+		// 	});
+		// }
+		
+    ServerEvent.on('TreeRead', function(data) {
+			data.socket.emit('NASScaned', data.result);
+		});
     
     // Ouverture de la socket
     io.sockets.on('connection', function (socket) {
     	
     	ReloadModule(socket);
     	
-    	// socket.on('ReloadModule', ReloadModule(socket));
+    	socket.on('ScanNAS', function() {
+				ServerEvent.emit('ScanNAS', socket);
+		});
 			
 			// ----------------------- Décompte uniquement des User Connecté ----------------------- //
 			socket.on('disconnect', function(){

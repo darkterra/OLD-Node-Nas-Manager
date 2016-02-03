@@ -12,6 +12,7 @@
   "dependencies": {
     "bcrypt": "~0.8.5",
     "body-parser": "~1.14.2",
+    "check-types": "~6.0.0",
     "colors": "~1.0.3",
     "compression": "~1.6.1",
     "cookie-parser": "~1.4.0",

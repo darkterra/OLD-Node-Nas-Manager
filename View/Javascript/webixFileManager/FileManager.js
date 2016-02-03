@@ -1244,9 +1244,7 @@ webix.ready(function(){
   
   
   mainWindow.show();
-  
-  
-  $$("files").parse([
+  var original = [
     {id: "files", value: "Files", open: true,  type: "folder", date:  new Date(2014,2,10,16,10), data:[
     	{ id: "documents", value: "Documents", date:  new Date(2014,2,10,16,10),  type: "folder", open: true, data:[
     		{id: "presentations", value: "Presentations", type: "folder", date:  new Date(2014,2,10,16,10), data:[
@@ -1299,5 +1297,298 @@ webix.ready(function(){
     		{id: "video3", value: "Conference.avi", icon: "file-video-o", type:"video", date:  new Date(2014,2,10,16,12), size: "31256000", pId: "video" }
     	]}
     ]}
-  ]);
+  ];
+  
+  var modified = [{
+	"id": "Controller1",
+	"value": "Controller",
+	"type": "folder",
+	"date": "2016-01-28T18:54:02.350Z",
+	"data": [{
+		"id": "pres1",
+		"value": "README.md",
+		"type": "pp",
+		"date": "2016-01-06T12:44:59.333Z",
+		"size": 524
+	}, {
+		"id": "pres2",
+		"value": "scanNAS.js",
+		"type": "pp",
+		"date": "2016-02-03T18:08:49.884Z",
+		"size": 7540
+	}, {
+		"id": "pres3",
+		"value": "sockets.js",
+		"type": "pp",
+		"date": "2016-02-01T15:32:27.342Z",
+		"size": 2539
+	}]
+}, {
+	"id": "Log",
+	"value": "Log",
+	"type": "folder",
+	"date": "2016-01-06T12:44:59.337Z",
+	"data": [{
+		"id": 1,
+		"value": "README.md",
+		"type": "pp",
+		"date": "2016-01-06T12:44:59.337Z",
+		"size": 512
+	}]
+}, {
+	"id": 18,
+	"value": "Model",
+	"type": "folder",
+	"date": "2016-01-06T12:44:59.337Z",
+	"data": [{
+		"id": 1,
+		"value": "README.md",
+		"type": "pp",
+		"date": "2016-01-06T12:44:59.337Z",
+		"size": 514
+	}]
+}, {
+	"id": 19,
+	"value": "Doc",
+	"type": "folder",
+	"date": "2016-01-27T22:51:34.071Z",
+	"data": [{
+		"id": 1,
+		"value": "nnm.png",
+		"type": "pp",
+		"date": "2016-01-28T12:53:04.198Z",
+		"size": 145496
+	}]
+}, {
+	"id": 20,
+	"value": "Install",
+	"type": "folder",
+	"date": "2016-01-06T12:44:59.337Z",
+	"data": [{
+		"id": 1,
+		"value": "Backup_Conf_Img_Master.conf",
+		"type": "pp",
+		"date": "2016-01-06T12:44:59.333Z",
+		"size": 1297
+	}, {
+		"id": 2,
+		"value": "Backup_Img_Exclave.sh",
+		"type": "pp",
+		"date": "2016-01-06T12:44:59.333Z",
+		"size": 1587
+	}, {
+		"id": 3,
+		"value": "Backup_Img_Master.sh",
+		"type": "pp",
+		"date": "2016-01-06T12:44:59.333Z",
+		"size": 7433
+	}, {
+		"id": 4,
+		"value": "InotifyWait.sh",
+		"type": "pp",
+		"date": "2016-01-06T12:44:59.333Z",
+		"size": 451
+	}, {
+		"id": 5,
+		"value": "RSyncONCE.sh",
+		"type": "pp",
+		"date": "2016-01-06T12:44:59.333Z",
+		"size": 446
+	}, {
+		"id": 6,
+		"value": "Watch_Dogs.sh",
+		"type": "pp",
+		"date": "2016-01-06T12:44:59.333Z",
+		"size": 2747
+	}, {
+		"id": 7,
+		"value": "crontab",
+		"type": "pp",
+		"date": "2016-01-27T13:11:30.255Z",
+		"size": 996
+	}, {
+		"id": 8,
+		"value": "startSB.sh",
+		"type": "pp",
+		"date": "2016-01-06T12:44:59.333Z",
+		"size": 113
+	}, {
+		"id": 9,
+		"value": "testVentilo.sh",
+		"type": "pp",
+		"date": "2016-01-06T12:44:59.333Z",
+		"size": 451
+	}]
+}];
+  
+  $$("files").parse(modified);
 });
+
+
+
+// [{
+// 	"id": "files",
+// 	"value": "Files",
+// 	"open": true,
+// 	"type": "folder",
+// 	"date": "new Date(2014, 2, 10, 16, 10)",
+// 	"data": [{
+// 		"id": "documents",
+// 		"value": "Documents",
+// 		"date": "new Date(2014, 2, 10, 16, 10)",
+// 		"type": "folder",
+// 		"open": true,
+// 		"data": [{
+// 			"id": "presentations",
+// 			"value": "Presentations",
+// 			"type": "folder",
+// 			"date": "new Date(2014, 2, 10, 16, 10)",
+// 			"data": [{
+// 				"id": "pres1",
+// 				"value": "October 2014.ppt",
+// 				"type": "pp",
+// 				"date": "new Date(2014, 2, 10, 16, 10)",
+// 				"size": "12830"
+// 			}, {
+// 				"id": "pres2",
+// 				"value": "June 2014.ppt",
+// 				"type": "pp",
+// 				"date": "new Date(2014, 2, 10, 16, 10)",
+// 				"size": "20100"
+// 			}, {
+// 				"id": "pres3",
+// 				"value": "April 2014.ppt",
+// 				"type": "pp",
+// 				"date": "new Date(2014, 2, 10, 16, 10)",
+// 				"size": "15750"
+// 			}]
+// 		}, {
+// 			"id": "reports",
+// 			"value": "Reports",
+// 			"type": "folder",
+// 			"date": "new Date(2014, 2, 10, 16, 10)",
+// 			"open": true,
+// 			"data": [{
+// 				"id": "usa",
+// 				"value": "USA",
+// 				"type": "folder",
+// 				"date": "new Date(2014, 2, 10, 16, 10)",
+// 				"data": [{
+// 					"id": "salesUS",
+// 					"value": "Sales USA.ppt",
+// 					"type": "excel",
+// 					"date": "new Date(2014, 2, 10, 16, 10)",
+// 					"size": "12830"
+// 				}, {
+// 					"id": "overviewUS",
+// 					"value": "Overview USA.doc",
+// 					"type": "doc",
+// 					"date": "new Date(2014, 2, 10, 16, 10)",
+// 					"size": "15030"
+// 				}, {
+// 					"id": "pricesUS",
+// 					"value": "Prices USA.ppt",
+// 					"type": "excel",
+// 					"date": "new Date(2014, 2, 10, 16, 10)",
+// 					"size": "15830"
+// 				}, {
+// 					"id": "productsUS",
+// 					"value": "Products USA.ppt",
+// 					"type": "excel",
+// 					"date": "new Date(2014, 2, 10, 16, 10)",
+// 					"size": "20830"
+// 				}]
+// 			}, {
+// 				"id": "europe",
+// 				"value": "Europe",
+// 				"type": "folder",
+// 				"date": "new Date(2014, 2, 10, 16, 10)",
+// 				"data": [{
+// 					"id": "salesEurope",
+// 					"value": "Sales Europe.ppt",
+// 					"type": "archive",
+// 					"date": "new Date(2014, 2, 10, 16, 10)",
+// 					"size": "12830"
+// 				}, {
+// 					"id": "pricesEurope",
+// 					"value": "Prices Europe.ppt",
+// 					"type": "excel",
+// 					"date": "new Date(2014, 2, 10, 16, 10)",
+// 					"size": "15830"
+// 				}, {
+// 					"id": "productsEurope",
+// 					"value": "Products Europe.ppt",
+// 					"type": "excel",
+// 					"date": "new Date(2014, 2, 10, 16, 10)",
+// 					"size": "20830"
+// 				}, {
+// 					"id": "overviewEurope",
+// 					"value": "Overview Europe.doc",
+// 					"type": "doc",
+// 					"date": "new Date(2014, 2, 10, 16, 10)",
+// 					"size": "15030"
+// 				}]
+// 			}, {
+// 				"id": "asia",
+// 				"value": "Asia",
+// 				"type": "folder",
+// 				"date": "new Date(2014, 2, 10, 16, 10)",
+// 				"data": [{
+// 					"id": "salesAsia",
+// 					"value": "Sales Asia.ppt",
+// 					"type": "excel",
+// 					"date": "new Date(2014, 2, 10, 16, 10)",
+// 					"size": "12083"
+// 				}, {
+// 					"id": "pricesAsia",
+// 					"value": "Prices Asia.ppt",
+// 					"type": "excel",
+// 					"date": "new Date(2014, 2, 10, 16, 10)",
+// 					"size": "15830"
+// 				}, {
+// 					"id": "overviewAsia",
+// 					"value": "Overview Asia.doc",
+// 					"type": "doc",
+// 					"date": "new Date(2014, 2, 10, 16, 10)",
+// 					"size": "15030"
+// 				}, {
+// 					"id": "productsAsia",
+// 					"value": "Products Asia.ppt",
+// 					"type": "excel",
+// 					"date": "new Date(2014, 2, 10, 16, 10)",
+// 					"size": "20830"
+// 				}]
+// 			}]
+// 		}]
+// 	}, {
+// 		"id": "video",
+// 		"value": "Video",
+// 		"type": "folder",
+// 		"date": "new Date(2014, 2, 10, 16, 12)",
+// 		"data": [{
+// 			"id": "video1",
+// 			"value": "New Year 2013.avi",
+// 			"icon": "file-video-o",
+// 			"type": "video",
+// 			"date": "new Date(2014, 2, 10, 16, 12)",
+// 			"size": "25030000",
+// 			"pId": "video"
+// 		}, {
+// 			"id": "video2",
+// 			"value": "Presentation.avi",
+// 			"icon": "file-video-o",
+// 			"type": "video",
+// 			"date": "new Date(2014, 2, 10, 16, 12)",
+// 			"size": "11072000",
+// 			"pId": "video"
+// 		}, {
+// 			"id": "video3",
+// 			"value": "Conference.avi",
+// 			"icon": "file-video-o",
+// 			"type": "video",
+// 			"date": "new Date(2014, 2, 10, 16, 12)",
+// 			"size": "31256000",
+// 			"pId": "video"
+// 		}]
+// 	}]
+// }]
