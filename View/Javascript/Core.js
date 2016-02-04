@@ -7,7 +7,7 @@
 
 let NNM = NNM || {};
 
-NNM.socket = io();
+NNM.socket = io('http://localhost:3001');
 
 
 // ES6 Static Legacy Import
