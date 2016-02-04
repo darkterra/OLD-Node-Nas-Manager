@@ -75,7 +75,7 @@ var sessionMiddleware = session({
 });
 
 // Configuration de l'application
-app.use(compression({filter: shouldCompress}));
+// app.use(compression({filter: shouldCompress}));
 app.use(favicon(__dirname + '/View/Images/favicon.ico'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
