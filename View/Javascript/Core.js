@@ -7,7 +7,7 @@
 
 let NNM = NNM || {};
 
-NNM.socket = io('http://localhost:3001');
+NNM.socket = io();
 
 
 // ES6 Static Legacy Import
@@ -31,7 +31,7 @@ NNM.socket.emit('ScanNAS');
 NNM.socket.on('NASScaned', function(data) {
   // console.log('Scan Receved: ' + JSON.stringify(data));
   console.log('Done');
-  $$("files").parse(data);
+  // $$("files").parse(data);
   // FileManager.filemanager.parse(data);
 });
 

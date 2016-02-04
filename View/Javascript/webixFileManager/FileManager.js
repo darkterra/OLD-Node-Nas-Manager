@@ -1424,11 +1424,11 @@ webix.ready(function(){
 	}]
 }];
   
-  $$("files").attachEvent('plop', function(data) {
-      $$("files").parse(data);
-    }, true);
+  // $$("files").attachEvent('plop', function(data) {
+  //     $$("files").parse(data);
+  //   }, true);
   
-  //$$("files").parse(modified);
+  $$("files").parse(modified);
 });
 
 
