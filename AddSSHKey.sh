@@ -1,0 +1,1 @@
+ssh-agent bash && ssh-add /home/ubuntu/.ssh/id_rsa_pm2_rpiB
