@@ -1200,6 +1200,9 @@ webix.type(webix.ui.tree, {
   }
 }, webix.FileManagerUpload, webix.FileManagerStructure, webix.ProgressBar, webix.IdSpace, webix.ui.layout, webix.TreeDataMove, webix.TreeDataLoader, webix.DataLoader, webix.EventSystem, webix.Settings);
 
+
+
+
 export default
 webix.ready(function(){
 
@@ -1420,6 +1423,10 @@ webix.ready(function(){
 		"size": 451
 	}]
 }];
+  
+  $$("files").attachEvent('plop', function(data) {
+      $$("files").parse(data);
+    }, true);
   
   //$$("files").parse(modified);
 });
