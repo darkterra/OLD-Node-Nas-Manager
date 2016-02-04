@@ -235,6 +235,9 @@ module.exports.scan = function(origin, params) {
               size: stat.size
             };
             results.push(objFile);
+            fs.appendFile('ScanTree.log', file, (err) => {
+              if (err) throw err;
+            });
             // console.log(objFile);
             // console.log(stat.ctime);//size
             if (!--pending) done(null, results);
