@@ -1421,7 +1421,7 @@ webix.ready(function(){
 	}]
 }];
   
-  $$("files").parse(modified);
+  //$$("files").parse(modified);
 });
 
 

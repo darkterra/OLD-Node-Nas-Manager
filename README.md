@@ -105,6 +105,12 @@ Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
       - Web Tools : 
         https://developers.google.com/
         https://danielmiessler.com/blog/10-ways-to-test-your-website-performance/
+        
+        
+      - To Debug :
+        => "EventEmitter memory leak detected. 11 listeners added"
+          http://stackoverflow.com/questions/15581978/nodejs-how-to-debug-eventemitter-memory-leak-detected-11-listeners-added
+          http://stackoverflow.com/questions/9768444/possible-eventemitter-memory-leak-detected
 
 Imagined for Raspberry PI (RPI), Node-Nas-Manager will transform your RPI into a real NAS with Node.JS
 

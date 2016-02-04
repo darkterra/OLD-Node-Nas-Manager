@@ -11,7 +11,7 @@ NNM.socket = io();
 
 // ES6 Static Legacy Import
 import * as lib from 'lib.js';
-import 'webixFileManager/FileManager.js';
+import FileManager from 'webixFileManager/FileManager.js';
 
 
 // API Dynamic Loader
@@ -28,7 +28,10 @@ NNM.socket.on('ModulesToLoad', function (data) {
 NNM.socket.emit('ScanNAS');
 
 NNM.socket.on('NASScaned', function(data) {
-  console.log('Scan Receved: ' + JSON.stringify(data));
+  // console.log('Scan Receved: ' + JSON.stringify(data));
+  console.log('Done');
+  // $$("files").parse(data);
+  FileManager.filemanager.parse(data);
 });
 
 

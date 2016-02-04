@@ -184,12 +184,13 @@ let check       = require('check-types');
 let fs          = require('fs');
 let path        = require('path');
 
-let originPath  = '/media/HDD1/NAS01/MultiMedia/';
+// let originPath  = '/media/HDD1/NAS01/MultiMedia/';
+let originPath  = '/home/pi';
 // let results     = [];
 
 module.exports.scan = function(origin, params) {
   
-  if (origin !== undefined && check.string(origin))
+  if (origin !== undefined && check.string(origin) && process.env.HOME != '/home/pi')
   {
     originPath = origin;
   }

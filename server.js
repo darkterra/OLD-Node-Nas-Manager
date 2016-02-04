@@ -97,7 +97,7 @@ app.use(express.static(path.join(__dirname, 'View')));
 
 
 ServerEvent.on('ReloadModule', function() {
-  fs.readFile(__dirname + '/data.json', 'utf8', (err, data) => {
+  fs.readFile(__dirname + '/config.json', 'utf8', (err, data) => {
     if (err) throw err;
     dataJson = data;
     ServerEvent.emit('DataRead', dataJson);
