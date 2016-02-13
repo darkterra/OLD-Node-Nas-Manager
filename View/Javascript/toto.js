@@ -1,15 +1,17 @@
 /**
  * 
- * KODI_Link.js : 
+ * toto.js : 
 **/
 
 'use strict';
 
+require('./KODI_Link.js');
+
 let NNM = NNM || {};
 
-NNM.KODI_Link = (function(self, extentionName) {
+NNM.toto = (function(self, extentionName) {
   console.log('This Is KODI_Link...');
   return self;
-})(NNM.KODI_Link || {}, 'KODI_Link');
+})(NNM.toto || {}, 'toto');
 
 // export default NNM;

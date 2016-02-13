@@ -7,6 +7,8 @@
 
 let NNM = NNM || {};
 
+require( "./KODI_Link.js" );
+
 NNM.socket = io();
 
 

@@ -7,7 +7,7 @@
 let NNM = NNM || {};
 
 NNM.FileManager = (function(self, extentionName) {
-  
+  return self;
 })(NNM.FileManager || {}, 'FileManager');
 
 webix.type(webix.ui.tree, {

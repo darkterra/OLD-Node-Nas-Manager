@@ -43,6 +43,8 @@ Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
       - pm2 link g44tyerwetm3ex3 mi2ku55gmqeehe4 [ServerName]
       
       
+      - https://adambom.github.io/parallel.js/
+      
       
       - https://app.keymetrics.io/#/bucket/567ecee7136fc0ed30190d8a/dashboard
       - http://pm2.keymetrics.io/docs/usage/quick-start/
@@ -92,7 +94,7 @@ Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
       
       
       - Make nodeScript for first install (Modify /boot/config.txt => overclock; gpuRAM)
-          # Modification by DarkTerra (for RPI B)
+          # Modification by DarkTerra for NNM (on RPI B)
           arm_freq=1000
           core_freq=500
           sdram_freq=600
@@ -101,6 +103,9 @@ Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
           ExecStart=-/sbin/agetty --noclear %I $TERM
       - And exec this (sudo systemctl set-default multi-user) than REBOOT !
       
+      
+      - Tools :
+        http://dsheiko.github.io/cjsc/
       
       - Web Tools : 
         https://developers.google.com/
