@@ -122,13 +122,32 @@ function shouldCompress(req, res) {
   return compression.filter(req, res);
 }
 
-// Création du serveur
-http.listen(port, function () {
-  console.log('\nNode Nas Management listening at 127.0.0.1:'.verbose + port.verbose);
-  console.log('La version du serveur Node.JS : '.data + process.version.warn);
-  console.log('Le serveur Node.JS fonctionne sur la plateforme : '.data + process.platform.warn);
-  // console.log('La plateforme fonctionne depuis : '.data + tools.convertTimeToHuman(os.uptime()).warn);
-});
+// Check Version of Node before Launch.
+fs.readFile(__dirname + '/package.json', 'utf8', (err, data) => {
+    if (err) throw err;
+    
+    
+    var refVersion = parseInt(JSON.parse(data).engines.node.replace(/[^0-9]/g, ''), 10);
+    var nodeVersion = parseInt(process.version.replace(/[^0-9]/g, ''), 10);
+    
+    if (nodeVersion >= refVersion) {
+      console.log('Version du server OK...'.verbose);
+      console.log('La version du serveur Node.JS : '.data + process.version.warn);
+      console.log('Le serveur Node.JS fonctionne sur la plateforme : '.data + process.platform.warn);
+    }
+    else {
+      console.log('La version du serveur Node.JS doit être plus récente : '.warn);
+      console.log('Version demandé : '.data + refVersion + ', votre version : '.data + nodeVersion);
+      process.exit(1);
+    }
+    
+    // Création du serveur
+    http.listen(port, function () {
+      console.log('\nNode Nas Management listening at 127.0.0.1:'.verbose + port.verbose);
+      // console.log('La plateforme fonctionne depuis : '.data + tools.convertTimeToHuman(os.uptime()).warn);
+    });
+  });
+
 
 // pmx.emit('user:register', {
 //   user : 'Alex registered',

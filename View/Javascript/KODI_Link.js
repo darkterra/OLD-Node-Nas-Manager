@@ -12,4 +12,4 @@ NNM.KODI_Link = (function(self, extentionName) {
   return self;
 })(NNM.KODI_Link || {}, 'KODI_Link');
 
-// export default NNM;
+export default NNM;
