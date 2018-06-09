@@ -8,6 +8,8 @@
                                                                                  /____/             
     ------------------------------------------------------------------------------------------------
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/darkterra/Node-Nas-Manager.svg)](https://greenkeeper.io/)
+
 Welcome to your Node-Nas-Manager (NNM) project (built on Cloud9 IDE!)
 
 ## What is Node-Nas-Manager (NNM) ?
